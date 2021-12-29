@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ActHeaderComponent implements OnInit {
 
+  public isMenuOpen = false;
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  andMore () {
+    this . isMenuOpen = ! this . isMenuOpen ;
+    //this . sidenav 
+  }
 }
