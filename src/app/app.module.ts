@@ -10,17 +10,26 @@ import { environment } from '../environments/environment';
 import { MatButtonModule } from '@angular/material/button' ;
 import { MatIconModule } from '@angular/material/icon' ;
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
+import { MatTableModule } from '@angular/material/table';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 const uiModules = [
   MatSidenavModule,
   MatIconModule,
-  MatButtonModule
+  MatButtonModule,
+  MatCardModule,
+  MatListModule,
+  MatTableModule,
+  MatToolbarModule
 ];
 
 import { HomeComponent } from './home/home.component';
 import { ActivityModule } from './activity/activity.module';
 import { VacationModule } from './vacation/vacation.module';
 import { BackOfficeModule } from './back-office/back-office.module';
+import { PersonalModule } from './personal/personal.module';
 
 @NgModule({
   declarations: [
@@ -35,6 +44,7 @@ import { BackOfficeModule } from './back-office/back-office.module';
     ActivityModule,
     VacationModule,
     BackOfficeModule,
+    PersonalModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the app is stable
@@ -44,6 +54,7 @@ import { BackOfficeModule } from './back-office/back-office.module';
   ],
 //  exports: [ uiModules ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [ uiModules ]
 })
 export class AppModule { }

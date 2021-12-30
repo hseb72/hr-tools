@@ -1,1 +1,18 @@
-<p>vac-main works!</p>
+<app-vac-header></app-vac-header>
+
+<div id="main-container">
+    <mat-card>
+        <mat-card-title><mat-icon>assignment</mat-icon> Actions attendues</mat-card-title>
+        <mat-card-content>
+            <mat-list>
+                <mat-list-item><mat-icon color="warn" routerLink="/activity/time/2111">assignment_late</mat-icon> Corrections</mat-list-item>
+                <mat-list-item><mat-icon color="primary" routerLink="/activity/time/2112">assignment</mat-icon> Soumissions</mat-list-item>
+            </mat-list>
+        </mat-card-content>
+    </mat-card>
+
+    <!-- Some margin to be sure to get the main container bottom visible -->
+    <div class="vertical-spacer"></div>
+</div>
+
+<app-vac-footer></app-vac-footer>

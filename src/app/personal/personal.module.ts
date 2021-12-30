@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ActivityRoutingModule } from './activity-routing.module';
-import { ActMainComponent } from './act-main/act-main.component';
-import { ActHeaderComponent } from './act-header/act-header.component';
-import { ActFooterComponent } from './act-footer/act-footer.component';
+import { PersonalRoutingModule } from './personal-routing.module';
+import { PerMainComponent } from './per-main/per-main.component';
+import { PerHeaderComponent } from './per-header/per-header.component';
+import { PerFooterComponent } from './per-footer/per-footer.component';
 
 import { MatButtonModule } from '@angular/material/button' ;
 import { MatIconModule } from '@angular/material/icon' ;
@@ -25,14 +25,14 @@ const uiModules = [
 ];
 @NgModule({
   declarations: [
-    ActMainComponent,
-    ActHeaderComponent,
-    ActFooterComponent
+    PerMainComponent,
+    PerHeaderComponent,
+    PerFooterComponent
   ],
   imports: [
+    uiModules,
     CommonModule,
-    ActivityRoutingModule,
-    uiModules
+    PersonalRoutingModule
   ]
 })
-export class ActivityModule { }
+export class PersonalModule { }

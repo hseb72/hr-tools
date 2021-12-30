@@ -1,0 +1,13 @@
+footer {
+    background-color: blueviolet;
+    color: white;
+
+    width: 100vw;
+    position: fixed;
+    bottom: 0px;
+
+    .mat-toolbar {
+        display: flex;
+        justify-content: space-around;
+    }
+}

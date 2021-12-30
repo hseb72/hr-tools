@@ -6,7 +6,23 @@ import { VacMainComponent } from './vac-main/vac-main.component';
 import { VacHeaderComponent } from './vac-header/vac-header.component';
 import { VacFooterComponent } from './vac-footer/vac-footer.component';
 
+import { MatButtonModule } from '@angular/material/button' ;
+import { MatIconModule } from '@angular/material/icon' ;
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
+import { MatTableModule } from '@angular/material/table';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
+const uiModules = [
+  MatSidenavModule,
+  MatIconModule,
+  MatButtonModule,
+  MatCardModule,
+  MatListModule,
+  MatTableModule,
+  MatToolbarModule
+];
 @NgModule({
   declarations: [
     VacMainComponent,
@@ -14,6 +30,7 @@ import { VacFooterComponent } from './vac-footer/vac-footer.component';
     VacFooterComponent
   ],
   imports: [
+    uiModules,
     CommonModule,
     VacationRoutingModule
   ]

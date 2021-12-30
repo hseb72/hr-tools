@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VacHeaderComponent implements OnInit {
 
+  public isMenuOpen = false;
+
   constructor() { }
 
   ngOnInit(): void {

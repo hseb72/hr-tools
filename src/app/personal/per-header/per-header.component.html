@@ -4,7 +4,7 @@
             <mat-icon>{{ isMenuOpen ? 'menu_open' : 'menu' }}</mat-icon>
         </button>
 
-        <span>Congés</span>
+        <span>Moi</span>
         <span class="spacer"></span>
 
         <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
@@ -17,10 +17,8 @@
 
     <mat-sidenav-container class="sidenav-container {{ isMenuOpen ? 'expanded' : 'shrinked' }}">
         <mat-sidenav #sidenav autoFocus="false" mode="over" [(opened)]="isMenuOpen" class="sidenav">
-        <a mat-button routerLink="/activity"><mat-icon>dashboard</mat-icon> Tableau de bord</a>
-        <a mat-button routerLink="/activity/vac-new" color="accent"><mat-icon>playlist_add</mat-icon> Nouvelle absence</a>
-        <a mat-button routerLink="/activity/vac-list" color="accent"><mat-icon>description</mat-icon> Liste des congés </a>
-        <a mat-button routerLink="/activity/vac-calendar" color="accent"><mat-icon>calendar_today</mat-icon> Calendrier</a>
+        <a mat-button routerLink="/personal"><mat-icon>dashboard</mat-icon> Tableau de bord</a>
+        <a mat-button routerLink="/personal/per-update" color="accent"><mat-icon>update</mat-icon> Modifier mes données personnelles</a>
     </mat-sidenav>
   </mat-sidenav-container>
 </header>

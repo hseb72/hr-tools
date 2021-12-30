@@ -1,20 +1,27 @@
 <header>
-    <div>
-        <button mat-button class="menu-button" (click)="sidenav.toggle(); andMore()">
+    <mat-toolbar>
+        <button mat-icon-button class="menu-button" (click)="sidenav.toggle(); andMore()">
             <mat-icon>{{ isMenuOpen ? 'menu_open' : 'menu' }}</mat-icon>
         </button>
 
-        <a routerLink="/activity">
-            <span class="app-title">Activité</span>
-        </a>
-    </div>
+        <span>Activités</span>
+        <span class="spacer"></span>
+
+        <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+            <mat-icon>notifications</mat-icon>
+        </button>
+        <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+            <mat-icon>share</mat-icon>
+        </button>
+    </mat-toolbar>
+
     <mat-sidenav-container class="sidenav-container {{ isMenuOpen ? 'expanded' : 'shrinked' }}">
         <mat-sidenav #sidenav autoFocus="false" mode="over" [(opened)]="isMenuOpen" class="sidenav">
-        <a mat-button routerLink="/page1">Page 1</a>
-        <a mat-button routerLink="/page2">Page 2</a>
-        <a mat-button routerLink="/page3">Page 3</a>
-        <a mat-button routerLink="/page4">Page 4</a>
-        <a mat-button routerLink="/page5">Page 5</a>
+        <a mat-button routerLink="/activity"><mat-icon>dashboard</mat-icon> Tableau de bord</a>
+        <a mat-button routerLink="/activity/act-time" color="accent"><mat-icon>access_time</mat-icon> Saisie des temps</a>
+        <a mat-button routerLink="/activity/act-invoice" color="accent"><mat-icon>description</mat-icon> Notes de frais </a>
+        <a mat-button routerLink="/activity/act-template" color="accent"><mat-icon>palette</mat-icon> Modèles</a>
+        <a mat-button routerLink="/activity/act-calendar" color="accent"><mat-icon>calendar_today</mat-icon> Calendrier</a>
     </mat-sidenav>
   </mat-sidenav-container>
 </header>

@@ -1,1 +1,22 @@
-<p>vac-footer works!</p>
+<!-- Some margin to be sure to get the main container bottom visible -->
+<div style="height: 100px; display:block;"></div>
+
+<footer>
+    <mat-toolbar id="footer-toolbar">
+        <button mat-icon-button class="menu-button">
+            <mat-icon routerLink="/">home</mat-icon>
+        </button>
+        <button mat-icon-button class="menu-button">
+            <mat-icon routerLink="/activity">access_time</mat-icon>
+        </button>
+        <button mat-icon-button class="menu-button">
+            <mat-icon routerLink="/vacation">beach_access</mat-icon>
+        </button>
+        <button mat-icon-button class="menu-button">
+            <mat-icon routerLink="/back-office">build</mat-icon>
+        </button>
+        <button mat-icon-button class="menu-button">
+            <mat-icon routerLink="/personal">person_pin</mat-icon>
+        </button>
+    </mat-toolbar>
+</footer>
