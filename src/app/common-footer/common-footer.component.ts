@@ -1,9 +1,4 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
-import { BackOfficeRoutingModule } from './back-office-routing.module';
-import { BoHeaderComponent } from './bo-header/bo-header.component';
-import { BoMainComponent } from './bo-main/bo-main.component';
+import { Component, OnInit } from '@angular/core';
 
 import { MatButtonModule } from '@angular/material/button' ;
 import { MatIconModule } from '@angular/material/icon' ;
@@ -22,15 +17,17 @@ const uiModules = [
   MatTableModule,
   MatToolbarModule
 ];
-@NgModule({
-  declarations: [
-    BoMainComponent,
-    BoHeaderComponent
-  ],
-  imports: [
-    CommonModule,
-    BackOfficeRoutingModule,
-    uiModules
-  ]
+
+@Component({
+  selector: 'app-common-footer',
+  templateUrl: './common-footer.component.html',
+  styleUrls: ['./common-footer.component.scss']
 })
-export class BackOfficeModule { }
+export class CommonFooterComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+}

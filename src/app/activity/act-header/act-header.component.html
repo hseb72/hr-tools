@@ -1,5 +1,5 @@
 <header>
-    <mat-toolbar>
+    <mat-toolbar color="primary">
         <button mat-icon-button class="menu-button" (click)="sidenav.toggle(); andMore()">
             <mat-icon>{{ isMenuOpen ? 'menu_open' : 'menu' }}</mat-icon>
         </button>
@@ -19,7 +19,7 @@
         <mat-sidenav #sidenav autoFocus="false" mode="over" [(opened)]="isMenuOpen" class="sidenav">
         <a mat-button routerLink="/activity"><mat-icon>dashboard</mat-icon> Tableau de bord</a>
         <a mat-button routerLink="/activity/act-time" color="accent"><mat-icon>access_time</mat-icon> Saisie des temps</a>
-        <a mat-button routerLink="/activity/act-invoice" color="accent"><mat-icon>description</mat-icon> Notes de frais </a>
+        <a mat-button routerLink="/activity/act-invoice" color="accent"><mat-icon>receipt</mat-icon> Notes de frais </a>
         <a mat-button routerLink="/activity/act-template" color="accent"><mat-icon>palette</mat-icon> Modèles</a>
         <a mat-button routerLink="/activity/act-calendar" color="accent"><mat-icon>calendar_today</mat-icon> Calendrier</a>
     </mat-sidenav>

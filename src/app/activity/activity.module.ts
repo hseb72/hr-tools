@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { ActivityRoutingModule } from './activity-routing.module';
 import { ActMainComponent } from './act-main/act-main.component';
 import { ActHeaderComponent } from './act-header/act-header.component';
-import { ActFooterComponent } from './act-footer/act-footer.component';
 
 import { MatButtonModule } from '@angular/material/button' ;
 import { MatIconModule } from '@angular/material/icon' ;
@@ -26,8 +25,7 @@ const uiModules = [
 @NgModule({
   declarations: [
     ActMainComponent,
-    ActHeaderComponent,
-    ActFooterComponent
+    ActHeaderComponent
   ],
   imports: [
     CommonModule,

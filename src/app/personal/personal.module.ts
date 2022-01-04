@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { PersonalRoutingModule } from './personal-routing.module';
 import { PerMainComponent } from './per-main/per-main.component';
 import { PerHeaderComponent } from './per-header/per-header.component';
-import { PerFooterComponent } from './per-footer/per-footer.component';
 
 import { MatButtonModule } from '@angular/material/button' ;
 import { MatIconModule } from '@angular/material/icon' ;
@@ -26,8 +25,7 @@ const uiModules = [
 @NgModule({
   declarations: [
     PerMainComponent,
-    PerHeaderComponent,
-    PerFooterComponent
+    PerHeaderComponent
   ],
   imports: [
     uiModules,

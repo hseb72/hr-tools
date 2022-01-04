@@ -13,7 +13,7 @@
   <mat-card>
     <mat-card-title><mat-icon>access_time</mat-icon> Déclarations de l'année</mat-card-title>
     <mat-card-content>
-      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <table mat-table [dataSource]="actReports" class="mat-elevation-z8">
 
         <!--- Note that these columns can be defined in any order.
         The actual rendered columns are set as a property on the row definition" -->
@@ -27,25 +27,25 @@
         <!-- MonthName Column -->
         <ng-container matColumnDef="monthname">
           <th mat-header-cell *matHeaderCellDef> Mois </th>
-          <td mat-cell *matCellDef="let element"> {{element.monthname}} </td>
+          <td mat-cell *matCellDef="let element"> {{monthNames[element.month-1]}} </td>
         </ng-container>
 
         <!-- Workdays Column -->
-        <ng-container matColumnDef="workdays">
+        <ng-container matColumnDef="workeddays">
           <th mat-header-cell *matHeaderCellDef> Travaillés </th>
-          <td mat-cell *matCellDef="let element"> {{element.workdays}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.workeddays}} </td>
         </ng-container>
 
         <!-- Vacations Column -->
-        <ng-container matColumnDef="vacations">
+        <ng-container matColumnDef="offdays">
           <th mat-header-cell *matHeaderCellDef> Congés </th>
-          <td mat-cell *matCellDef="let element"> {{element.vacations}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.offdays}} </td>
         </ng-container>
 
         <!-- Status Column -->
         <ng-container matColumnDef="status">
           <th mat-header-cell *matHeaderCellDef> Etat </th>
-          <td mat-cell *matCellDef="let element"> <mat-icon color="{{ element.status == '_late' ? 'warn' : 'primary' }}">assignment{{element.status}}</mat-icon> </td>
+          <td mat-cell *matCellDef="let element"> <mat-icon color="{{statusColors[element.status]}}">{{statusIcons[element.status]}}</mat-icon> </td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -57,5 +57,3 @@
   <!-- Some margin to be sure to get the main container bottom visible -->
   <div class="vertical-spacer"></div>
 </div>
-
-<app-act-footer></app-act-footer>

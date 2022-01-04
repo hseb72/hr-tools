@@ -3,7 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  apiUrl: "https://soredi.crealcs.com/api",
+  ActApiUrl: "https://soredi.crealcs.com/api/activity",
+  AcrApiUrl: "https://soredi.crealcs.com/api/actreport",
+  EmpApiUrl: "https://soredi.crealcs.com/api/employee"
 };
 
 /*

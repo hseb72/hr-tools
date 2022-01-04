@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { VacationRoutingModule } from './vacation-routing.module';
 import { VacMainComponent } from './vac-main/vac-main.component';
 import { VacHeaderComponent } from './vac-header/vac-header.component';
-import { VacFooterComponent } from './vac-footer/vac-footer.component';
 
 import { MatButtonModule } from '@angular/material/button' ;
 import { MatIconModule } from '@angular/material/icon' ;
@@ -26,8 +25,7 @@ const uiModules = [
 @NgModule({
   declarations: [
     VacMainComponent,
-    VacHeaderComponent,
-    VacFooterComponent
+    VacHeaderComponent
   ],
   imports: [
     uiModules,
