@@ -49,7 +49,7 @@ export class ActMainComponent implements OnInit {
 
   statusNames = [ '', '', '', '', '', '', '', '', '', "à soumettre", "validé", "en retard", "à corriger" ];
   statusIcons = [ '', '', '', '', '', '', '', '', '', "assignment", "assignment_turned_in", "assignment_late", "assignment_return" ];
-  statusColors = [ '', '', '', '', '', '', '', '', '', "primary", "", "warn", "warn" ];
+  statusColors = [ '', '', '', '', '', '', '', '', '', "accent", "primary", "warn", "warn" ];
 
 //  year ;
 //  month ;
