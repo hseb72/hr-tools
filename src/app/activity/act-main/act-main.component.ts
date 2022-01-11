@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
+import { Today } from '../../core/models/today'
 
 import { ActreportService } from '../services/actreport.services';
 
@@ -27,7 +28,6 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {month: 12, monthname: 'Décembre', workdays: 22, status: '', vacations: 0},
 ];
 */
-
 @Component({
   selector: 'app-act-main',
   templateUrl: './act-main.component.html',
@@ -41,9 +41,7 @@ export class ActMainComponent implements OnInit {
 
   actReports: string[] = [] ;
 
-  today ;
-  todayyear ;
-  todaymonth ;
+  today: Today = { "date": "", "year": "", "month": "", "day": "", "week": "" };
 
   monthNames = [ 'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre' ] ;
 
@@ -60,10 +58,10 @@ export class ActMainComponent implements OnInit {
     private actreportService: ActreportService,
     private datePipe: DatePipe
   ) {
-    this.today = this.datePipe.transform(Date.now(), 'yyyy-MM-dd');
-    this.todayyear = this.datePipe.transform(Date.now(), 'yyyy');
-    this.todaymonth = this.datePipe.transform(Date.now(), 'M');
-   // this.week = this.datePipe.transform(Date.now(), 'ww');
+    this.today.date = this.datePipe.transform(Date.now(), 'yyyy-MM-dd');
+    this.today.year = this.datePipe.transform(Date.now(), 'yyyy');
+    this.today.month = this.datePipe.transform(Date.now(), 'M');
+    this.today.week = this.datePipe.transform(Date.now(), 'ww');
 
    }
 
@@ -72,6 +70,7 @@ export class ActMainComponent implements OnInit {
     . getAll ()
     . subscribe ( acr => {
       this . actReports = JSON . parse ( JSON . stringify ( acr ) ) ; 
+      console.log (this.actReports)
     })
   }
 

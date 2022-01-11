@@ -6,8 +6,9 @@ import { map } from 'rxjs/operators';
 
 import { environment } from '../../../environments/environment';
 import { User } from '../models/user';
+import { EmployeeService } from './employee.service';
 
-const EMPTY_USER = { id: 0, email: '', firstName: '', lastName: '' }
+const EMPTY_USER = { id: 0, email: '', firstName: '', lastName: '' };
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
@@ -16,7 +17,8 @@ export class AuthenticationService {
 
     constructor(
         private router: Router,
-        private http: HttpClient
+        private http: HttpClient,
+        private employeeService: EmployeeService
     ) {
         var user = localStorage.getItem('user') ;
         if ( ! user ) { user = JSON.stringify(EMPTY_USER) ; }
@@ -29,24 +31,33 @@ export class AuthenticationService {
     }
 
     login(username: any, password: any) {
-        return this.http.post<User>(`${environment.apiUrl}/users/authenticate`, { username, password })
+        /* fake login */
+        const USER = { id: 1, email: username, firstName: 'Fake', lastName: 'User' }
+        localStorage.setItem('user', JSON.stringify(USER));
+        this.userSubject.next(USER);
+        //return USER;
+        /* End of fake user - restore return string below to enable true login */
+
+//        return this.http.post<User>(`${environment.apiUrl}/users/authenticate`, { username, password })
+        return this.employeeService.authenticate(username, password)
             .pipe(map(user => {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('user', JSON.stringify(user));
                 this.userSubject.next(user);
                 return user;
             }));
+            /**/
     }
 
     logout() {
         // remove user from local storage and set current user to null
         localStorage.removeItem('user');
         this.userSubject.next(EMPTY_USER);
-        this.router.navigate(['/account/login']);
+        this.router.navigate(['/']);
     }
 
     register(user: User) {
-        return this.http.post(`${environment.apiUrl}/users/register`, user);
+        return this.http.post(`${environment.apiUrl}/employee/register`, user);
     }
 
     getAll() {

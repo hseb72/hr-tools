@@ -14,6 +14,8 @@ export class AuthGuard implements CanActivate {
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         const user = this.authenticationService.userValue;
+        //user.id = 1; /* fake connexion ok */
+
         if (user.id != 0) {
             // authorised so return true
             return true;

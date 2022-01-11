@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
     // convenience getter for easy access to form fields
     get f() { return this.form.controls; }
 
-    /* Test Okta */
+    /* Test Okta *
     async onSubmit(): Promise<void> {
       this.loginInvalid = false;
       this.formSubmitAttempt = false;
@@ -67,7 +67,7 @@ export class LoginComponent implements OnInit {
       }
     }
 
-/* this.submitted = true;
+/* this.submitted = true; */
 
     onSubmit() {
         // reset alerts on submit
@@ -90,6 +90,6 @@ export class LoginComponent implements OnInit {
                     this.loading = false;
                 });
   }
-              */
+              /**/
     
 }

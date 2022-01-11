@@ -27,7 +27,7 @@
         <!-- MonthName Column -->
         <ng-container matColumnDef="monthname">
           <th mat-header-cell *matHeaderCellDef> Mois </th>
-          <td mat-cell *matCellDef="let element"> {{monthNames[element.month-1]}} </td>
+          <td mat-cell *matCellDef="let element" routerLink="/activity/month/{{element.year}}/{{element.month}}"> {{monthNames[element.month-1]}} </td>
         </ng-container>
 
         <!-- Workdays Column -->

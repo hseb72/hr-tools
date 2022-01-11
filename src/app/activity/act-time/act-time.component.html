@@ -1,0 +1,21 @@
+<app-act-header></app-act-header>
+
+<div id="main-container" class="my-activity-theme">
+  TODAY Y : {{today.year}}
+  <br />
+  TODAY M : {{today.month}}
+
+  <br />
+
+  <input title="3rd" type="file" (change)="onFileChange2($event)" multiple="false" />
+  <table class="sjs-table">
+    <tr *ngFor="let row of data">
+      <td *ngFor="let val of row">
+        {{val}}
+      </td>
+    </tr>
+  </table>
+
+  <!-- Some margin to be sure to get the main container bottom visible -->
+  <div class="vertical-spacer"></div>
+</div>

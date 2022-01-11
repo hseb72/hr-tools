@@ -12,6 +12,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { ActMonthComponent } from './act-month/act-month.component';
+import { ActTimeComponent } from './act-time/act-time.component';
 
 const uiModules = [
   MatSidenavModule,
@@ -25,7 +27,9 @@ const uiModules = [
 @NgModule({
   declarations: [
     ActMainComponent,
-    ActHeaderComponent
+    ActHeaderComponent,
+    ActMonthComponent,
+    ActTimeComponent
   ],
   imports: [
     CommonModule,

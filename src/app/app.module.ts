@@ -54,13 +54,15 @@ import { BackOfficeModule } from './back-office/back-office.module';
 import { PersonalModule } from './personal/personal.module';
 import { CommonFooterComponent } from './common-footer/common-footer.component';
 import { LoginComponent } from './login/login.component';
+import { LogoutComponent } from './core/components/logout/logout.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     CommonFooterComponent,
-    LoginComponent
+    LoginComponent,
+    LogoutComponent
   ],
   imports: [
     uiModules,

@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class ActHeaderComponent implements OnInit {
 
   public isMenuOpen = false;
+  displayedColumns: string[] = ['month', 'monthname', 'workeddays', 'offdays', 'status'];
 
   constructor() { }
 
