@@ -12,7 +12,7 @@ import * as XLSX from 'xlsx';
 export class ActTimeComponent implements OnInit {
   @Input() name: string = 'This is XLSX TO JSON CONVERTER';
 
-  today: Today = { "date": "", "year": "", "month": "", "week": "", "day": "" };
+  today: Today = { "date": "", "year": "", "month": "", "week": "", "day": "", "weekday": "" };
 
   /* For XLSX */
   willDownload = false;
@@ -26,11 +26,13 @@ export class ActTimeComponent implements OnInit {
   constructor(
     private datePipe: DatePipe
   ) {
+/*
     this.today.date = this.datePipe.transform(Date.now(), 'yyyy-MM-dd');
     this.today.year = this.datePipe.transform(Date.now(), 'yyyy');
     this.today.month = this.datePipe.transform(Date.now(), 'M');
     this.today.week = this.datePipe.transform(Date.now(), 'ww');
-   }
+  */
+    }
 
   ngOnInit(): void {
   }

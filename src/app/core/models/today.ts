@@ -1,7 +1,8 @@
 export interface Today {
-    date: string|null;
-    year: string|null;
-    month: string|null;
-    day: string|null;
-    week: string|null;
+    date: string;
+    year: string;
+    month: string;
+    day: string;
+    week: string;
+    weekday: string;
   }

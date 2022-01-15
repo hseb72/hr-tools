@@ -1,0 +1,43 @@
+<mat-card>
+    <mat-card-title><mat-icon>access_time</mat-icon> Déclarations de {{today.year}}</mat-card-title>
+    <mat-card-content>
+      <table mat-table [dataSource]="actReports" class="mat-elevation-z8">
+
+        <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+        <!-- Month Column -->
+        <ng-container matColumnDef="month">
+          <th mat-header-cell *matHeaderCellDef> No. </th>
+          <td mat-cell *matCellDef="let element"> {{element.month}} </td>
+        </ng-container>
+
+        <!-- MonthName Column -->
+        <ng-container matColumnDef="monthname">
+          <th mat-header-cell *matHeaderCellDef> Mois </th>
+          <td mat-cell *matCellDef="let element" routerLink="/activity/month/{{element.year}}/{{element.month}}"> {{monthNames[element.month-1]}} </td>
+        </ng-container>
+
+        <!-- Workdays Column -->
+        <ng-container matColumnDef="workeddays">
+          <th mat-header-cell *matHeaderCellDef> Travaillés </th>
+          <td mat-cell *matCellDef="let element"> {{element.workeddays}} </td>
+        </ng-container>
+
+        <!-- Vacations Column -->
+        <ng-container matColumnDef="offdays">
+          <th mat-header-cell *matHeaderCellDef> Congés </th>
+          <td mat-cell *matCellDef="let element"> {{element.offdays}} </td>
+        </ng-container>
+
+        <!-- Status Column -->
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef> Etat </th>
+          <td mat-cell *matCellDef="let element"> <mat-icon color="{{statusColors[element.status]}}">{{statusIcons[element.status]}}</mat-icon> </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </mat-card-content>
+  </mat-card>

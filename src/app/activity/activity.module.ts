@@ -14,6 +14,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ActMonthComponent } from './act-month/act-month.component';
 import { ActTimeComponent } from './act-time/act-time.component';
+import { ActAlertComponent } from './act-alert/act-alert.component';
+import { ActYearSummaryComponent } from './act-year-summary/act-year-summary.component';
 
 const uiModules = [
   MatSidenavModule,
@@ -29,7 +31,9 @@ const uiModules = [
     ActMainComponent,
     ActHeaderComponent,
     ActMonthComponent,
-    ActTimeComponent
+    ActTimeComponent,
+    ActAlertComponent,
+    ActYearSummaryComponent
   ],
   imports: [
     CommonModule,

@@ -1,7 +1,24 @@
 .soredi-table {
-    border: solid black 1px;
+    border-collapse: collapse;
+    text-indent: initial;
+    border-spacing: 2px;
 
-    td {
-        border: solid black 1px;
+    td, th {
+        background-color: #fff;
+        color: #418ace;
+        font-family: Verdana;
+        font-size: 7pt;
+        margin-top: 2px;
+    }
+
+    th {
+        display: table-cell;
+        vertical-align: inherit;
+        font-weight: bold;
+        text-align: -internal-center;
+    }
+
+    .day-off {
+        background-color: #fff8dc;
     }
 }

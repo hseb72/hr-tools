@@ -17,8 +17,12 @@ export class ActreportService {
     return this.http.get(`${environment.AcrApiUrl}`);
   }
 
-  getOne(user: any, year: any, month: any) {
-    return this.http.get(`${environment.AcrApiUrl}/fromkey/${user}/${year}/${month}`) ;
+  getUserMonth(user: any, year: any, month: any) {
+    return this.http.get(`${environment.AcrApiUrl}/user-month/${user}/${year}/${month}`) ;
+  }
+
+  getUserYear(user: any, year: any) {
+    return this.http.get(`${environment.AcrApiUrl}/user-year/${user}/${year}`);
   }
 
   getApprover(id: string) {

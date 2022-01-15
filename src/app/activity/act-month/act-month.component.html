@@ -46,23 +46,63 @@
     </mat-card>
 
     <mat-card>
-      <mat-card-title><mat-icon color="{{statusColors[report?.status]}}">{{statusIcons[report?.status]}}</mat-icon> {{monthNames[reqmonth-1]}} {{reqyear}} </mat-card-title>
+      <mat-card-title><mat-icon color="{{statusColors[report?.status]}}">{{statusIcons[report?.status]}}</mat-icon> Jours fériés</mat-card-title>
       <mat-card-content>
-        <input title="3rd" type="file" (change)="onFileChange2($event)" multiple="false" />
-          <table class="soredi-table">
-            <ng-container *ngFor="let row of data; let i = index;">
-              <tr *ngIf="i>3 && i<39">
-                <ng-container *ngFor="let val of row; let j = index;">
-                  <td *ngIf="j<17">
-                    {{val}}
-                  </td>
-                </ng-container>
+        <table class="mat-elevation-z8">
+          <tr mat-row>
+            <th>Année</th>
+            <th>Mois</th>
+            <th>Jour</th>
+            <th>Raison</th>
+          </tr>
+          <ng-container *ngFor="let pho of pubholidays; let i = index;">
+              <tr>
+                <td>{{pho.year}}</td>
+                <td>{{pho.month}}</td>
+                <td>{{pho.day}}</td>
+                <td>{{pho.reason}}</td>
               </tr>
             </ng-container>
           </table>
         </mat-card-content>
       </mat-card>
   
-  <!-- Some margin to be sure to get the main container bottom visible -->
+      <mat-card>
+        <mat-card-title><mat-icon color="{{statusColors[report?.status]}}">{{statusIcons[report?.status]}}</mat-icon> {{monthNames[reqmonth-1]}} {{reqyear}} - {{empname}} </mat-card-title>
+        <mat-card-content>
+          <input title="3rd" type="file" (change)="onFileChange2($event)" multiple="false" />
+            <table class="soredi-table">
+              <tr>
+                <th></th>
+                <th></th>
+                <th>Société - Projet</th>
+                <th>0/0,5/1</th>
+              </tr>
+              <ng-container *ngFor="let row of activities; let i = index;">
+                <tr>
+                  <th class='{{row[9]}}'>
+                    {{row[5]}}
+                  </th>
+                  <td class='{{row[9]}}'>
+                    {{row[4]}}
+                  </td>
+                  <td class='{{row[9]}}'>
+                    {{row[7]}}
+                  </td>
+                  <td class='{{row[9]}}'>
+                    {{row[8]}}
+                  </td>
+                  <!--ng-container *ngFor="let val of row; let j = index;">
+                    <td *ngIf="j>0 && j<4" [class]='row[9]'>
+                      {{val}}
+                    </td>
+                  </ng-container-->
+                </tr>
+              </ng-container>
+            </table>
+          </mat-card-content>
+        </mat-card>
+    
+    <!-- Some margin to be sure to get the main container bottom visible -->
   <div class="vertical-spacer"></div>
   </div>
