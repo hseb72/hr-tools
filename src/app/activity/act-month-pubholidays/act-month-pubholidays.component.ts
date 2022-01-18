@@ -30,7 +30,7 @@ export class ActMonthPubholidaysComponent implements OnInit {
         this . refresh() ;
       }
     ) ;
-}
+  }
 
   ngOnInit(): void {
   }

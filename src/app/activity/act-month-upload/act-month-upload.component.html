@@ -1,9 +1,9 @@
 <mat-card>
-    <mat-card-title><mat-icon color="{{statusColors[report?.status]}}">{{statusIcons[report?.status]}}</mat-icon> {{monthNames[month-1]}} {{year}} - {{empname}} </mat-card-title>
+    <mat-card-title><mat-icon color="primary">file_upload</mat-icon> Mise à jour depuis un fichier</mat-card-title>
     <mat-card-content>
         <input title="3rd" type="file" (change)="onFileChange($event)" multiple="false" />
         <table class="soredi-table">
-            <tr>
+            <tr *ngIf="activities.length > 0">
                 <th></th>
                 <th></th>
                 <th>Société - Projet</th>
@@ -11,18 +11,10 @@
             </tr>
             <ng-container *ngFor="let row of activities; let i = index;">
                 <tr>
-                    <th class='{{row[9]}}'>
-                    {{row[5]}}
-                    </th>
-                    <td class='{{row[9]}}'>
-                    {{row[4]}}
-                    </td>
-                    <td class='{{row[9]}}'>
-                    {{row[7]}}
-                    </td>
-                    <td class='{{row[9]}}'>
-                    {{row[8]}}
-                    </td>
+                    <th class='{{row[9]}}'>{{row[5]}}</th>
+                    <th class='{{row[9]}}'>{{row[4]}}</th>
+                    <th class='{{row[9]}}'>{{row[7]}}</th>
+                    <th class='{{row[9]}}'>{{row[8]}}</th>
                 </tr>
             </ng-container>
         </table>
