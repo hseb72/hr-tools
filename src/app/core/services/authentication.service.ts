@@ -31,7 +31,7 @@ export class AuthenticationService {
     }
 
     login(username: any, password: any) {
-        /* fake login */
+        /* fake login *
         const USER = { id: 1, email: username, firstName: 'Fake', lastName: 'User' }
         localStorage.setItem('user', JSON.stringify(USER));
         this.userSubject.next(USER);
@@ -61,15 +61,15 @@ export class AuthenticationService {
     }
 
     getAll() {
-        return this.http.get<User[]>(`${environment.apiUrl}/users`);
+        return this.http.get<User[]>(`${environment.apiUrl}/employee`);
     }
 
     getById(id: string) {
-        return this.http.get<User>(`${environment.apiUrl}/users/${id}`);
+        return this.http.get<User>(`${environment.apiUrl}/employee/${id}`);
     }
 
     update(id: number, params: any) {
-        return this.http.put(`${environment.apiUrl}/users/${id}`, params)
+        return this.http.put(`${environment.apiUrl}/employee/${id}`, params)
             .pipe(map(x => {
                 // update stored user if the logged in user updated their own record
                 if (id == this.userValue.id) {

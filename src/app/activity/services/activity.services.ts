@@ -17,23 +17,23 @@ export class ActivityService {
     return this.http.get(`${environment.ActApiUrl}`);
   }
 
-  getApprover(id: string) {
+  getActivity(id: string) {
     return this.http.get(`${environment.ActApiUrl}/${id}`);
   }
 
-  putApprover(content: string) {
+  putActivity(content: string) {
     return this.http.put(`${environment.ActApiUrl}`, `${content}`, httpOptions) ;
   }
 
-  postApprover(content: string) {
+  postActivity(content: string) {
     return this.http.post(`${environment.ActApiUrl}`, `${content}`, httpOptions) ;
   }
 
-  patchApprover(id: string, content: string) {
+  patchActivity(id: string, content: string) {
     return this.http.patch(`${environment.ActApiUrl}/${id}`, `${content}`, httpOptions) ;
   }
 
-  deleteApprover(id: string) {
+  deleteActivity(id: string) {
     return this.http.delete(`${environment.ActApiUrl}/${id}`) ;
   }
 }

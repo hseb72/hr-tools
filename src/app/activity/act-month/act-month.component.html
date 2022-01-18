@@ -1,108 +1,36 @@
 <app-act-header></app-act-header>
 
 <div id="main-container" class="my-activity-theme">
-    <mat-card>
-        <mat-card-title><mat-icon color="{{statusColors[report?.status]}}">{{statusIcons[report?.status]}}</mat-icon> {{monthNames[reqmonth-1]}} {{reqyear}} </mat-card-title>
-        <mat-card-content>
-            <table mat-table [dataSource]="actReports" class="mat-elevation-z8">
 
-            <!--- Note that these columns can be defined in any order.
-            The actual rendered columns are set as a property on the row definition" -->
+  <app-act-month-calnav
+    [monthNames]="monthNames">
+  </app-act-month-calnav>
 
-        <!-- Month Column -->
-        <ng-container matColumnDef="month">
-            <th mat-header-cell *matHeaderCellDef> No. </th>
-            <td mat-cell *matCellDef="let element"> {{element.month}} </td>
-          </ng-container>
-  
-          <!-- MonthName Column -->
-          <ng-container matColumnDef="monthname">
-            <th mat-header-cell *matHeaderCellDef> Mois </th>
-            <td mat-cell *matCellDef="let element" routerLink="/activity/month/{{element.year}}/{{element.month}}"> {{monthNames[element.month-1]}} </td>
-          </ng-container>
-  
-          <!-- Workdays Column -->
-          <ng-container matColumnDef="workeddays">
-            <th mat-header-cell *matHeaderCellDef> Travaillés </th>
-            <td mat-cell *matCellDef="let element"> {{element.workeddays}} </td>
-          </ng-container>
-  
-          <!-- Vacations Column -->
-          <ng-container matColumnDef="offdays">
-            <th mat-header-cell *matHeaderCellDef> Congés </th>
-            <td mat-cell *matCellDef="let element"> {{element.offdays}} </td>
-          </ng-container>
-  
-          <!-- Status Column -->
-          <ng-container matColumnDef="status">
-            <th mat-header-cell *matHeaderCellDef> Etat </th>
-            <td mat-cell *matCellDef="let element"> <mat-icon color="{{statusColors[element.status]}}">{{statusIcons[element.status]}}</mat-icon> </td>
-          </ng-container>
-  
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-            </table>
-        </mat-card-content>
-    </mat-card>
+  <app-act-month-summary
+    [statusNames]="statusNames" 
+    [statusColors]="statusColors" 
+    [statusIcons]="statusIcons"
+    [year]="reqyear"
+    [month]="reqmonth"
+    [user]="currentUser"
+    [reports]="actReports"
+    [report]="report">
+  </app-act-month-summary>
 
-    <mat-card>
-      <mat-card-title><mat-icon color="{{statusColors[report?.status]}}">{{statusIcons[report?.status]}}</mat-icon> Jours fériés</mat-card-title>
-      <mat-card-content>
-        <table class="mat-elevation-z8">
-          <tr mat-row>
-            <th>Année</th>
-            <th>Mois</th>
-            <th>Jour</th>
-            <th>Raison</th>
-          </tr>
-          <ng-container *ngFor="let pho of pubholidays; let i = index;">
-              <tr>
-                <td>{{pho.year}}</td>
-                <td>{{pho.month}}</td>
-                <td>{{pho.day}}</td>
-                <td>{{pho.reason}}</td>
-              </tr>
-            </ng-container>
-          </table>
-        </mat-card-content>
-      </mat-card>
-  
-      <mat-card>
-        <mat-card-title><mat-icon color="{{statusColors[report?.status]}}">{{statusIcons[report?.status]}}</mat-icon> {{monthNames[reqmonth-1]}} {{reqyear}} - {{empname}} </mat-card-title>
-        <mat-card-content>
-          <input title="3rd" type="file" (change)="onFileChange2($event)" multiple="false" />
-            <table class="soredi-table">
-              <tr>
-                <th></th>
-                <th></th>
-                <th>Société - Projet</th>
-                <th>0/0,5/1</th>
-              </tr>
-              <ng-container *ngFor="let row of activities; let i = index;">
-                <tr>
-                  <th class='{{row[9]}}'>
-                    {{row[5]}}
-                  </th>
-                  <td class='{{row[9]}}'>
-                    {{row[4]}}
-                  </td>
-                  <td class='{{row[9]}}'>
-                    {{row[7]}}
-                  </td>
-                  <td class='{{row[9]}}'>
-                    {{row[8]}}
-                  </td>
-                  <!--ng-container *ngFor="let val of row; let j = index;">
-                    <td *ngIf="j>0 && j<4" [class]='row[9]'>
-                      {{val}}
-                    </td>
-                  </ng-container-->
-                </tr>
-              </ng-container>
-            </table>
-          </mat-card-content>
-        </mat-card>
-    
-    <!-- Some margin to be sure to get the main container bottom visible -->
+  <app-act-month-pubholidays
+    [monthNames]="monthNames">
+  </app-act-month-pubholidays>
+
+  <app-act-month-upload
+    [monthNames]="monthNames" 
+    [statusColors]="statusColors" 
+    [statusIcons]="statusIcons"
+    [dayNums]="dayNums"
+    [year]="reqyear"
+    [month]="reqmonth"
+    [report]="report">
+  </app-act-month-upload>
+
+  <!-- Some margin to be sure to get the main container bottom visible -->
   <div class="vertical-spacer"></div>
-  </div>
+</div>

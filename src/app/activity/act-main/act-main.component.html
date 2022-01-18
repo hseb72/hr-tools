@@ -3,7 +3,7 @@
 <div id="main-container" class="my-activity-theme">
   <app-act-alert></app-act-alert>
 
-  <app-act-year-summary></app-act-year-summary>
+  <app-act-year-summary *ngFor="let year of yearlist" [year]="year"></app-act-year-summary>
 
   <!-- Some margin to be sure to get the main container bottom visible -->
   <div class="vertical-spacer"></div>

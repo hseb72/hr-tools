@@ -25,23 +25,27 @@ export class ActreportService {
     return this.http.get(`${environment.AcrApiUrl}/user-year/${user}/${year}`);
   }
 
-  getApprover(id: string) {
+  getRequired(user: any) {
+    return this.http.get(`${environment.AcrApiUrl}/user-required/${user}`);
+  }
+
+  getActreport(id: string) {
     return this.http.get(`${environment.AcrApiUrl}/${id}`);
   }
 
-  putApprover(content: string) {
+  putActreport(content: string) {
     return this.http.put(`${environment.AcrApiUrl}`, `${content}`, httpOptions) ;
   }
 
-  postApprover(content: string) {
+  postActreport(content: string) {
     return this.http.post(`${environment.AcrApiUrl}`, `${content}`, httpOptions) ;
   }
 
-  patchApprover(id: string, content: string) {
+  patchActreport(id: string, content: string) {
     return this.http.patch(`${environment.AcrApiUrl}/${id}`, `${content}`, httpOptions) ;
   }
 
-  deleteApprover(id: string) {
+  deleteActreport(id: string) {
     return this.http.delete(`${environment.AcrApiUrl}/${id}`) ;
   }
 }

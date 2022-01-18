@@ -1,9 +1,13 @@
 <mat-card>
-    <mat-card-title><mat-icon>assignment</mat-icon> Actions attendues</mat-card-title>
-    <mat-card-content>
-      <mat-list>
-        <mat-list-item><mat-icon color="warn" routerLink="/activity/time/2111">assignment_late</mat-icon> Saisie des temps de novembre</mat-list-item>
-        <mat-list-item><mat-icon color="primary" routerLink="/activity/time/2112">assignment</mat-icon> Saisie des temps de décembre</mat-list-item>
-      </mat-list>
-    </mat-card-content>
-  </mat-card>
+  <mat-card-title><mat-icon class="free-icon">assignment</mat-icon>Actions attendues</mat-card-title>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item *ngFor="let element of actReports" routerLink="/activity/month/{{element.year}}/{{element.month}}">
+        <mat-icon color="{{statusColors[element.status]}}" class="free-icon">
+          {{statusIcons[element.status]}}
+        </mat-icon> 
+         Saisie des temps de {{monthNames[element.month-1]}} {{element.year}}
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>

@@ -16,6 +16,10 @@ import { ActMonthComponent } from './act-month/act-month.component';
 import { ActTimeComponent } from './act-time/act-time.component';
 import { ActAlertComponent } from './act-alert/act-alert.component';
 import { ActYearSummaryComponent } from './act-year-summary/act-year-summary.component';
+import { ActMonthSummaryComponent } from './act-month-summary/act-month-summary.component';
+import { ActMonthPubholidaysComponent } from './act-month-pubholidays/act-month-pubholidays.component';
+import { ActMonthUploadComponent } from './act-month-upload/act-month-upload.component';
+import { ActMonthCalnavComponent } from './act-month-calnav/act-month-calnav.component';
 
 const uiModules = [
   MatSidenavModule,
@@ -33,7 +37,11 @@ const uiModules = [
     ActMonthComponent,
     ActTimeComponent,
     ActAlertComponent,
-    ActYearSummaryComponent
+    ActYearSummaryComponent,
+    ActMonthSummaryComponent,
+    ActMonthPubholidaysComponent,
+    ActMonthUploadComponent,
+    ActMonthCalnavComponent
   ],
   imports: [
     CommonModule,

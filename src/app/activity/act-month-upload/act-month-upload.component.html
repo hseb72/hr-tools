@@ -1,0 +1,30 @@
+<mat-card>
+    <mat-card-title><mat-icon color="{{statusColors[report?.status]}}">{{statusIcons[report?.status]}}</mat-icon> {{monthNames[month-1]}} {{year}} - {{empname}} </mat-card-title>
+    <mat-card-content>
+        <input title="3rd" type="file" (change)="onFileChange($event)" multiple="false" />
+        <table class="soredi-table">
+            <tr>
+                <th></th>
+                <th></th>
+                <th>Société - Projet</th>
+                <th>0/0,5/1</th>
+            </tr>
+            <ng-container *ngFor="let row of activities; let i = index;">
+                <tr>
+                    <th class='{{row[9]}}'>
+                    {{row[5]}}
+                    </th>
+                    <td class='{{row[9]}}'>
+                    {{row[4]}}
+                    </td>
+                    <td class='{{row[9]}}'>
+                    {{row[7]}}
+                    </td>
+                    <td class='{{row[9]}}'>
+                    {{row[8]}}
+                    </td>
+                </tr>
+            </ng-container>
+        </table>
+    </mat-card-content>
+</mat-card>

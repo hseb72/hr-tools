@@ -1,0 +1,11 @@
+<mat-card>
+    <mat-card-title>
+        <table width="100%">
+            <tr>
+                <td class="left"><mat-icon [routerLink]="['/activity/month', prevyear, prevmonth]">chevron_left</mat-icon></td>
+                <td class="center">{{monthNames[+month-1]}} {{year}}</td>
+                <td class="right"><mat-icon routerLink="/activity/month/{{nextyear}}/{{nextmonth}}">chevron_right</mat-icon></td>
+            </tr>
+          </table>
+    </mat-card-title>
+</mat-card>
