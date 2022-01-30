@@ -36,6 +36,12 @@ export class ActMonthUploadComponent implements OnInit {
   month: number = 1 ;
   wrongYear: boolean = false ;
 
+  firstLine: number = 0 ;
+  firstColumn: number = 0 ;
+
+  fileYear: number = 0 ;
+  company: string = "Not Set" ;
+
   constructor(
     private activatedroute:ActivatedRoute,
     private pubholidayService: PubholidayService,
@@ -79,6 +85,23 @@ export class ActMonthUploadComponent implements OnInit {
       const ab: ArrayBuffer = e.target.result;
       this . workBook = XLSX.read(ab);
 
+      /* grab year sheet */
+      const wsyc: XLSX.WorkSheet = this . workBook . Sheets['YearlyCalendar'];
+
+      /* save data */
+      //this.data = <AOA>(XLSX.utils.sheet_to_json(ws, {header: 1}));
+      this . data = XLSX.utils.sheet_to_json(wsyc, {header: 1});
+      this . fileYear = this . data [4][0] ;
+
+      /* grab parameter sheet */
+      const wpar: XLSX.WorkSheet = this . workBook . Sheets['Parametres'];
+
+      /* save data */
+      //this.data = <AOA>(XLSX.utils.sheet_to_json(ws, {header: 1}));
+      this . data = XLSX.utils.sheet_to_json(wpar, {header: 1});
+      this . company = this . data [2][2] ;
+      this . empname = this . data [3][2] ;
+
       this . loadWorkSheet () ;
     }
     reader.readAsArrayBuffer(target.files[0]);
@@ -88,18 +111,11 @@ export class ActMonthUploadComponent implements OnInit {
     this . activities = [] ;
     this . wrongYear = false ;
 
-    /* grab first sheet */
-    const wsyc: XLSX.WorkSheet = this . workBook . Sheets['YearlyCalendar'];
-
-    /* save data */
-    //this.data = <AOA>(XLSX.utils.sheet_to_json(ws, {header: 1}));
-    this.data = XLSX.utils.sheet_to_json(wsyc, {header: 1});
-    const ycYear = this . data [4][0] ;
-
-    if ( ycYear != this.year ) { 
+    if ( this.fileYear != this.year ) { 
       this . snackBar . open ( "Le fichier ne correspond pas à l'année " + this . year, "Fermer");
       return ;
     }
+
 
     /* grab first sheet */
     const wsname: string = this . workBook . SheetNames[+this.month-1];
@@ -108,13 +124,17 @@ export class ActMonthUploadComponent implements OnInit {
     /* save data */
     //this.data = <AOA>(XLSX.utils.sheet_to_json(ws, {header: 1}));
     this.data = XLSX.utils.sheet_to_json(ws, {header: 1});
-    this . empname = this . data [1][3] ;
-    
-    for ( var i = 6 ; i < 39 ; i++ ) {
+    console.log (this.data);
+    /* Find first filled column */
+    var i = 0 ;
+    while ( i < 1000 && this . data [0][i] == undefined ) { i++ };
+    this . firstColumn = i ;
+
+    for ( var i = this . firstLine + 6 ; i < this.firstLine + 39 ; i++ ) {
       this . activities [ i-6 ] = [] ;
 
       const test = this . pubholidays . filter (
-        a => { a . year == this . year && a . month == this . month && a . day == this . data [ i ][ 1 ] }
+        a => { a . year == this . year && a . month == this . month && a . day == this . data [ i ][ this .firstColumn +1 ] }
       );
       
       if ( test . length > 0 ) {
@@ -126,17 +146,17 @@ export class ActMonthUploadComponent implements OnInit {
       this . activities [ i-6 ][ 1 ] = this . user ;
       this . activities [ i-6 ][ 2 ] = "" + this . year ;
       this . activities [ i-6 ][ 3 ] = "" + this . month ;
-      this . activities [ i-6 ][ 4 ] = this . data [ i ][ 1 ] ;
-      this . activities [ i-6 ][ 5 ] = this . data [ i ][ 0 ] ;
-      this . activities [ i-6 ][ 6 ] = '' + this . dayNums . indexOf ( this . data [ i ][ 0 ] ) ;
-      if ( this . data [ i ][ 2 ] )
-        this . activities [ i-6 ][ 7 ] = this . data [ i ][ 2 ] ;
-      this . activities [ i-6 ][ 8 ] = this . data [ i ][ 3 ] ;
+      this . activities [ i-6 ][ 4 ] = this . data [ i ][ this .firstColumn +1 ] ;
+      this . activities [ i-6 ][ 5 ] = this . data [ i ][ this .firstColumn +0 ] ;
+      this . activities [ i-6 ][ 6 ] = '' + this . dayNums . indexOf ( this . data [ i ][ this .firstColumn +0 ] ) ;
+      if ( this . data [ i ][ this .firstColumn +2 ] )
+        this . activities [ i-6 ][ 7 ] = this . data [ i ][ this .firstColumn +2 ] ;
+      this . activities [ i-6 ][ 8 ] = this . data [ i ][ this .firstColumn +3 ] ;
 
-      if ( this . data [ i ][ 0 ] == 'S' || this . data [ i ][ 0 ] == 'D' )
+      if ( this . data [ i ][ this .firstColumn +0 ] == 'S' || this . data [ i ][ this .firstColumn +0 ] == 'D' )
         this . activities [ i-6 ][ 9 ] = 'day-off' ;
 
-      if ( this . data [ i ][ 11 ] != null ) {
+      if ( this . data [ i ][ this .firstColumn +11 ] != null ) {
         this . activities [ i-6 ][ 7 ] = 'Congés payés' ;
         this . activities [ i-6 ][ 8 ] = '1' ;
       }
