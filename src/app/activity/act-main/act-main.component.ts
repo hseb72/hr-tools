@@ -28,7 +28,7 @@ export class ActMainComponent implements OnInit {
     this.today.year = "" + this.datePipe.transform(Date.now(), 'yyyy');
     this.today.month = "" + this.datePipe.transform(Date.now(), 'M');
     this.today.week = "" + this.datePipe.transform(Date.now(), 'ww');
-    this.today.weekday = "" + this.datePipe.transform(Date.now(), 'w');
+    this.today.weekday = "" + this.datePipe.transform(Date.now(), 'c');
 
     this . yearlist [ 0 ] = +this.today.year ;
     if ( this . today . month <= '2' ) this . yearlist [ 1 ] = +this.today.year - 1

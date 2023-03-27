@@ -1,5 +1,5 @@
 <mat-card>
-    <mat-card-title><mat-icon color="primary">file_upload</mat-icon> Mise à jour depuis un fichier</mat-card-title>
+    <mat-card-title><mat-icon color="primary">upload_file</mat-icon> Mise à jour depuis un fichier</mat-card-title>
     <mat-card-content>
         <input title="3rd" type="file" (change)="onFileChange($event)" multiple="false" />
         <table class="soredi-table">
@@ -13,10 +13,16 @@
                 <tr>
                     <th class='{{row[9]}}'>{{row[5]}}</th>
                     <th class='{{row[9]}}'>{{row[4]}}</th>
-                    <th class='{{row[9]}}'>{{row[7]}}</th>
-                    <th class='{{row[9]}}'>{{row[8]}}</th>
+                    <th class='{{row[9]}}'>{{row[7]}} <span *ngIf="findSavedActivity (i+1) . project != row[7]" class="replaced">{{ findSavedActivity (i+1) . project }}</span></th>
+                    <th class='{{row[9]}}'>{{row[8]}} <span *ngIf="findSavedActivity (i+1) . quantity != row[8]" class="replaced">{{ findSavedActivity (i+1) . quantity }}</span></th>
                 </tr>
             </ng-container>
+            <tr *ngIf="activities.length > 0">
+                <th></th>
+                <th></th>
+                <th><button mat-raised-button color="primary" (click)="uploadMonth()">Confirmer</button></th>
+                <th>{{activities.length}}</th>
+            </tr>
         </table>
     </mat-card-content>
 </mat-card>

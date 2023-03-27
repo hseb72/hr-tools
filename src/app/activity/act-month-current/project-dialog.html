@@ -1,0 +1,18 @@
+<h1 mat-dialog-title>Projet</h1>
+<div mat-dialog-content>
+  <p>Saississez le projet du jour {{data.day}}</p>
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Projet</mat-label>
+    <input matInput placeholder="Client - Projet" [(ngModel)]="data.project" class="spaced"/>
+    <input type="hidden" [(ngModel)]="data.day">
+</mat-form-field>
+<mat-radio-group aria-label="Choisissez une option" [(ngModel)]="data.type">
+  <mat-radio-button value="0" [checked]="data.type===0">Ce jour seulement</mat-radio-button>
+  <mat-radio-button value="1" >Toute la semaine</mat-radio-button>
+  <mat-radio-button value="2" >Tout le mois</mat-radio-button>
+</mat-radio-group>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Annuler</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Valider</button>
+</div>

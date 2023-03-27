@@ -1,0 +1,32 @@
+<mat-card>
+    <mat-card-title><mat-icon color="primary">pending_actions</mat-icon> <span class="font-effect-neon">Déclarations</span></mat-card-title>
+    <mat-card-content>
+        <table class="soredi-table">
+            <tr>
+                <th></th>
+                <th></th>
+                <th>Société - Projet</th>
+                <th>0/0,5/1</th>
+                <th>Effacer</th>
+            </tr>
+            <ng-container *ngFor="let activity of dispActivities; let i = index;">
+                <tr>
+                    <td class='{{activity . dayoff }}'>{{activity . dispweekday }}</td>
+                    <td class='{{activity . dayoff }}'>{{activity . day }}</td>
+                    <td class='{{activity . dayoff }}'><button class="project-button {{activity . dayoff }}" color="primary" (click)="openDialog(i, activity . project, 0)">{{activity . project }}</button></td>
+                    <td class='{{activity . dayoff }} center'>{{activity . quantity }}</td>
+                    <td class='{{activity . dayoff }} center'><mat-icon color="warn" class="in-tab-icon" (click)="clearDay(activity.day);" *ngIf="activity.quantity != 0 || activity.project !=''">cancel</mat-icon></td>
+                </tr>
+            </ng-container>
+            <ng-container *ngIf="savedActivities.length > 0">
+                <tr>
+                <th></th>
+                <th></th>
+                <th><button mat-raised-button color="primary" (click)="uploadMonth()">Mettre à jour</button></th>
+                <th>{{savedActivities.length}}</th>
+                <th></th>
+                </tr>
+            </ng-container>
+        </table>
+    </mat-card-content>
+</mat-card>

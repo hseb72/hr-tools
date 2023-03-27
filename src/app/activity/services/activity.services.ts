@@ -21,12 +21,20 @@ export class ActivityService {
     return this.http.get(`${environment.ActApiUrl}/${id}`);
   }
 
+  getEmployeeMonthActivity(employee: number, year: number, month: number) {
+    return this.http.get(`${environment.ActApiUrl}/employeemonth/${employee}/${year}/${month}`);
+  }
+
   putActivity(content: string) {
     return this.http.put(`${environment.ActApiUrl}`, `${content}`, httpOptions) ;
   }
 
   postActivity(content: string) {
     return this.http.post(`${environment.ActApiUrl}`, `${content}`, httpOptions) ;
+  }
+
+  uploadActivity(content: string) {
+    return this.http.post(`${environment.ActApiUrl}/upload`, `${content}`, httpOptions) ;
   }
 
   patchActivity(id: string, content: string) {
