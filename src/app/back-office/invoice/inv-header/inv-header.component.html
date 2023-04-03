@@ -1,0 +1,27 @@
+<header class="my-bo-theme">
+    <mat-toolbar color="primary">
+        <button mat-icon-button class="menu-button" (click)="sidenav.toggle(); andMore()">
+            <mat-icon>{{ isMenuOpen ? 'menu_open' : 'menu' }}</mat-icon>
+        </button>
+
+        <span>Activités</span>
+        <span class="spacer"></span>
+
+        <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+            <mat-icon>notifications</mat-icon>
+        </button>
+        <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+            <mat-icon>share</mat-icon>
+        </button>
+    </mat-toolbar>
+
+    <mat-sidenav-container class="sidenav-container {{ isMenuOpen ? 'expanded' : 'shrinked' }}">
+        <mat-sidenav #sidenav autoFocus="false" mode="over" [(opened)]="isMenuOpen" class="sidenav">
+        <a mat-button routerLink="/back-office/invoice"><mat-icon>dashboard</mat-icon> Tableau de bord</a>
+        <a mat-button routerLink="/back-office/invoice/inv-upload" color="accent"><mat-icon>access_time</mat-icon> Chargement</a>
+        <a mat-button routerLink="/back-office/invoice/inv-awaited" color="accent"><mat-icon>receipt</mat-icon> Attendues </a>
+        <a mat-button routerLink="/back-office/invoice/inv-paylate" color="accent"><mat-icon>palette</mat-icon> Inpayées</a>
+        <a mat-button routerLink="/back-office/invoice/inv-cal" color="accent"><mat-icon>calendar_today</mat-icon> Calendrier</a>
+    </mat-sidenav>
+  </mat-sidenav-container>
+</header>

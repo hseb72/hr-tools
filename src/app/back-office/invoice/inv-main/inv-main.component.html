@@ -1,0 +1,78 @@
+<app-inv-header></app-inv-header>
+
+<div id="main-container" class="my-bo-theme">
+    <mat-card>
+        <mat-card-title><mat-icon color="warn">notifications</mat-icon> Alertes</mat-card-title>
+        <mat-card-content>
+            <mat-list>
+                <mat-list-item><mat-icon color="warn" routerLink="/back-office/activity">assignment_late</mat-icon> Décalaration de temps incomplètes</mat-list-item>
+                <mat-list-item><mat-icon color="primary" routerLink="/back-office/invoice">note</mat-icon> Factures non reçues</mat-list-item>
+            </mat-list>
+        </mat-card-content>
+    </mat-card>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <b class="nav-item nowr btn-dark"> Filtres : </b>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ">
+                <!--ng-container *ngIf="currentUser"-->
+                    <li class="nav-item nowr"><span class="nav-link" (click)="resetFilters()"><i class="fas fa-file-invoice"></i>Aucun</span></li>
+                    <li *ngIf="!tocancel" class="nav-item nowr"><span class="nav-link" (click)="setCancelledFilter()"><i class="fas fa-times unset"></i>Exclure les annulées</span></li>
+                    <li *ngIf="tocancel" class="nav-item nowr"><span class="nav-link" (click)="unsetCancelledFilter()"><i class="fas fa-times unset"></i>Inclure les annulées</span></li>
+                    <li *ngIf="!topay" class="nav-item nowr"><span class="nav-link" (click)="setToPayFilter()"><i class="fas fa-check set"></i>Reste à payer</span></li>
+                    <li *ngIf="topay" class="nav-item nowr"><span class="nav-link" (click)="unsetToPayFilter()"><i class="fas fa-times unset"></i>Reste à payer</span></li>
+                    <li *ngIf="!tomatch" class="nav-item nowr"><span class="nav-link" (click)="setToMatchFilter()"><i class="fas fa-check set"></i>A rapprocher</span></li>
+                    <li *ngIf="tomatch" class="nav-item nowr"><span class="nav-link" (click)="unsetToMatchFilter()"><i class="fas fa-times unset"></i>A rapprocher</span></li>
+                    <li *ngIf="period" class="nav-item nowr"><span class="nav-link" (click)="unsetPeriodFilter()"><i class="fas fa-times unset"></i>{{period}}</span></li>
+                    <li *ngIf="file" class="nav-item nowr"><span class="nav-link" (click)="unsetFileFilter()"><i class="fas fa-times unset"></i>{{file}}</span></li>
+                    <li *ngIf="frl" class="nav-item nowr"><span class="nav-link" (click)="unsetFrlFilter()"><i class="fas fa-times unset"></i>{{frl}}</span></li>
+                <!--/ng-container-->
+            </ul>
+        </div>
+    </nav>
+    
+    <table class="table table-sm table-striped table-dark">
+        <tbody>
+            <tr >
+                <th>Id</th>
+                <th>Fichier</th>
+                <th>Ind&eacute;pendant</th>
+                <th>P&eacute;riode</th>
+                <th>R&eacute;f&eacute;rence</th>
+                <th>Affich. Freelance</th>
+                <th>Affich. Interne</th>
+                <th>Montant</th>
+                <th>Rapproch&eacute;</th>
+                <th>Pay&eacute;</th>
+                <th>Mail envoy&eacute;</th>
+                <th>Tampon Papier</th>
+                <th>Tampon Elec.</th>
+                <th>Annulation</th>
+                <th>Actions</th>
+            </tr>
+            <ng-container *ngFor="let inv of filteredInvoices">
+                <tr>
+                    <td>{{inv.id}}</td>
+                    <td><a (click)="setFileFilter(inv.filename)">{{inv.filename}}</a></td>
+                    <td><a (click)="setFrlFilter(inv.freelancecode)">{{inv.freelancecode}}</a></td>
+                    <td><a (click)="setPeriodFilter(inv.period)">{{inv.period}}</a></td>
+                    <td>{{inv.reference}}</td>
+                    <td>{{inv.frldisplay}}</td>
+                    <td>{{inv.sordisplay}}</td>
+                    <td>{{inv.amount}}</td>
+                    <td>{{inv.payamount}}</td>
+                    <td><input type="checkbox" [checked]="inv.payed == '1'" (click)="clicked(inv.id, 'payed', inv.payed)"/></td>
+                    <td><input type="checkbox" [checked]="inv.mailtofrl == '1'" (click)="clicked(inv.id, 'mailtofrl', inv.mailtofrl)"/></td>
+                    <td><input type="checkbox" [checked]="inv.stamped == '1'" (click)="clicked(inv.id, 'stamped', inv.stamped)"/></td>
+                    <td><input type="checkbox" [checked]="inv.estamped == '1'" (click)="clicked(inv.id, 'estamped', inv.estamped)"/></td>
+                    <td><input type="checkbox" [checked]="inv.cancelled == '1'" (click)="clicked(inv.id, 'cancelled', inv.cancelled)"/></td>
+                    <td nowrap>
+                        <a style="padding-right: 5px;" href="/freelance?id={{inv.freelance}}"><i class="fas fa-user-tie"></i></a>
+                    </td>
+                </tr>
+            </ng-container>
+        </tbody>
+    </table>
+        <!-- Some margin to be sure to get the main container bottom visible -->
+    <div class="vertical-spacer"></div>
+</div>

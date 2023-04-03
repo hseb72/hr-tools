@@ -9,7 +9,7 @@ export const environment = {
   AcrApiUrl: "https://soredi.crealcs.com/api/actreport",
   EmpApiUrl: "https://soredi.crealcs.com/api/employee",
   PhoApiUrl: "https://soredi.crealcs.com/api/pubholiday",
-};
+  InvApiUrl: "https://soredi.crealcs.com/api/invoice",};
 
 /*
  * For easier debugging in development mode, you can import the following file

@@ -52,6 +52,7 @@ import { HomeComponent } from './home/home.component';
 import { ActivityModule } from './activity/activity.module';
 import { VacationModule } from './vacation/vacation.module';
 import { BackOfficeModule } from './back-office/back-office.module';
+import { InvoiceModule } from './back-office/invoice/invoice.module';
 import { PersonalModule } from './personal/personal.module';
 import { CommonFooterComponent } from './common-footer/common-footer.component';
 import { LoginComponent } from './login/login.component';
@@ -77,6 +78,7 @@ import { LogoutComponent } from './core/components/logout/logout.component';
     ActivityModule,
     VacationModule,
     BackOfficeModule,
+    InvoiceModule,
     PersonalModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
