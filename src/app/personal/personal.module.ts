@@ -5,12 +5,12 @@ import { PersonalRoutingModule } from './personal-routing.module';
 import { PerMainComponent } from './per-main/per-main.component';
 import { PerHeaderComponent } from './per-header/per-header.component';
 
-import { MatButtonModule } from '@angular/material/button' ;
+import { MatLegacyButtonModule as MatButtonModule } from '@angular/material/legacy-button' ;
 import { MatIconModule } from '@angular/material/icon' ;
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatCardModule } from '@angular/material/card';
-import { MatListModule } from '@angular/material/list';
-import { MatTableModule } from '@angular/material/table';
+import { MatLegacyCardModule as MatCardModule } from '@angular/material/legacy-card';
+import { MatLegacyListModule as MatListModule } from '@angular/material/legacy-list';
+import { MatLegacyTableModule as MatTableModule } from '@angular/material/legacy-table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 const uiModules = [

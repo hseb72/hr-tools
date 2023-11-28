@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import * as XLSX from 'xlsx';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import {MatLegacySnackBar as MatSnackBar} from '@angular/material/legacy-snack-bar';
 
 import { PubholidayService } from "../../core/services/pubholiday.service";
 import { ActivityService } from '../services/activity.services'
