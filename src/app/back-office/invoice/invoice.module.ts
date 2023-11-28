@@ -8,14 +8,14 @@ import { InvAwaitedComponent } from './inv-awaited/inv-awaited.component';
 import { InvPaylateComponent } from './inv-paylate/inv-paylate.component';
 import { InvUploadComponent } from './inv-upload/inv-upload.component';
 
-import { MatLegacyButtonModule as MatButtonModule } from '@angular/material/legacy-button' ;
+import { MatButtonModule } from '@angular/material/button' ;
 import { MatIconModule } from '@angular/material/icon' ;
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatLegacyCardModule as MatCardModule } from '@angular/material/legacy-card';
-import { MatLegacyListModule as MatListModule } from '@angular/material/legacy-list';
-import { MatLegacyTableModule as MatTableModule } from '@angular/material/legacy-table';
+import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
+import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatLegacyCheckboxModule as MatCheckboxModule } from '@angular/material/legacy-checkbox';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 const uiModules = [
   MatSidenavModule,
