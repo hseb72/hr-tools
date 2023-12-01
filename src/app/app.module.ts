@@ -10,6 +10,8 @@ import { environment } from '../environments/environment';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
@@ -72,6 +74,8 @@ import { LogoutComponent } from './core/components/logout/logout.component';
     FlexLayoutModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
     ActivityModule,
     VacationModule,
     BackOfficeModule,
