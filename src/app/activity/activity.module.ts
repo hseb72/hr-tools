@@ -27,6 +27,7 @@ import { ActMonthPubholidaysComponent } from './act-month-pubholidays/act-month-
 import { ActMonthUploadComponent } from './act-month-upload/act-month-upload.component';
 import { ActMonthCalnavComponent } from './act-month-calnav/act-month-calnav.component';
 import { ActMonthCurrentComponent, DialogOverviewExampleDialog } from './act-month-current/act-month-current.component';
+import { ActCalComponent } from './act-cal/act-cal.component';
 
 const uiModules = [
   MatSidenavModule,
@@ -54,7 +55,8 @@ const uiModules = [
     ActMonthUploadComponent,
     ActMonthCalnavComponent,
     ActMonthCurrentComponent,
-    DialogOverviewExampleDialog
+    DialogOverviewExampleDialog,
+    ActCalComponent
   ],
   imports: [
     CommonModule,

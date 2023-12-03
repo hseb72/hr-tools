@@ -23,7 +23,6 @@ export class LoginComponent implements OnInit {
     private formSubmitAttempt = false;
 
     constructor(
-      private reactiveFormsModule: ReactiveFormsModule,
       private formBuilder: FormBuilder,
       private route: ActivatedRoute,
       private router: Router,
