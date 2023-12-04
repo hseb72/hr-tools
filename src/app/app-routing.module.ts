@@ -8,15 +8,17 @@ import { LogoutComponent } from "./core/components/logout/logout.component" ;
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
-  { path: 'login',  component: LoginComponent },
-  { path: 'logout',  component: LogoutComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'logout', component: LogoutComponent },
 
 // otherwise redirect to home
 //  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled'})],
+  imports: [RouterModule.forRoot(routes, {
+            enableTracing: false, // <-- debugging purposes only
+          })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
