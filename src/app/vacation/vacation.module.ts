@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { VacationRoutingModule } from './vacation-routing.module';
 import { VacMainComponent } from './vac-main/vac-main.component';
@@ -30,6 +32,9 @@ const uiModules = [
   imports: [
     uiModules,
     CommonModule,
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     VacationRoutingModule
   ]
 })

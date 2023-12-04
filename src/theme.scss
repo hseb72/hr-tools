@@ -16,15 +16,23 @@ $my-custom-primary: mat.define-palette(mat.$grey-palette, 200);
 $my-custom-accent: mat.define-palette(mat.$pink-palette, 100, 500, A100);
 $my-custom-warn: mat.define-palette(mat.$lime-palette);
 
-$my-custom-theme: mat.define-light-theme($my-custom-primary, $my-custom-accent, $my-custom-warn);
+$my-custom-theme: mat.define-light-theme((
+    color: (
+        primary: $my-custom-primary,
+        accent: $my-custom-accent,
+        warn: $my-custom-warn,
+    ),
+    typography: mat.define-typography-config(),
+    density: 0,
+));
 
 @include mat.all-component-themes($my-custom-theme);
 
 // Convert => mat-light-theme()
-$my-custom-theme: mat.define-light-theme($my-custom-primary, $my-custom-accent);
+//$my-custom-theme: mat.define-light-theme($my-custom-primary, $my-custom-accent);
 
 // Convert to this => mat-dark-theme()
-$my-custom-theme: mat.define-dark-theme($my-custom-primary, $my-custom-accent);
+//$my-custom-theme: mat.define-dark-theme($my-custom-primary, $my-custom-accent);
 
 // Alternate Angular Material Theme
 .my-activity-theme {
@@ -32,9 +40,17 @@ $my-custom-theme: mat.define-dark-theme($my-custom-primary, $my-custom-accent);
     $my-alternate-accent: mat.define-palette(mat.$orange-palette, 600);
     $my-alternate-warn: mat.define-palette(mat.$red-palette, 700);
   
-    $my-alternate-theme: mat.define-light-theme($my-alternate-primary, $my-alternate-accent, $my-alternate-warn);
-  
-    @include mat.all-component-themes($my-alternate-theme);
+    $my-alternate-theme: mat.define-light-theme((
+        color: (
+            primary: $my-alternate-primary,
+            accent: $my-alternate-accent,
+            warn: $my-alternate-warn,
+        ),
+        typography: mat.define-typography-config(),
+        density: 0,
+    ));
+      
+    @include mat.all-component-colors($my-alternate-theme);
 }
 
   // Alternate Angular Material Theme
@@ -43,9 +59,17 @@ $my-custom-theme: mat.define-dark-theme($my-custom-primary, $my-custom-accent);
     $my-vacation-accent: mat.define-palette(mat.$blue-palette, 800);
     $my-vacation-warn: mat.define-palette(mat.$red-palette, 700);
   
-    $my-vacation-theme: mat.define-light-theme($my-vacation-primary, $my-vacation-accent, $my-vacation-warn);
+    $my-vacation-theme: mat.define-light-theme((
+        color: (
+            primary: $my-vacation-primary,
+            accent: $my-vacation-accent,
+            warn: $my-vacation-warn,
+        ),
+        typography: mat.define-typography-config(),
+        density: 0,
+    ));
   
-    @include mat.all-component-themes($my-vacation-theme);
+    @include mat.all-component-colors($my-vacation-theme);
 }
 
 // Alternate Angular Material Theme
@@ -54,9 +78,17 @@ $my-custom-theme: mat.define-dark-theme($my-custom-primary, $my-custom-accent);
     $my-bo-accent: mat.define-palette(mat.$deep-purple-palette, 700);
     $my-bo-warn: mat.define-palette(mat.$red-palette, 700);
   
-    $my-bo-theme: mat.define-light-theme($my-bo-primary, $my-bo-accent, $my-bo-warn);
+    $my-bo-theme: mat.define-light-theme((
+        color: (
+            primary: $my-bo-primary,
+            accent: $my-bo-accent,
+            warn: $my-bo-warn,
+        ),
+        typography: mat.define-typography-config(),
+        density: 0,
+    ));
   
-    @include mat.all-component-themes($my-bo-theme);
+    @include mat.all-component-colors($my-bo-theme);
 }
 
 // Alternate Angular Material Theme
@@ -65,7 +97,15 @@ $my-custom-theme: mat.define-dark-theme($my-custom-primary, $my-custom-accent);
     $my-personal-accent: mat.define-palette(mat.$orange-palette, 400);
     $my-personal-warn: mat.define-palette(mat.$red-palette, 700);
   
-    $my-personal-theme: mat.define-light-theme($my-personal-primary, $my-personal-accent, $my-personal-warn);
-  
-    @include mat.all-component-themes($my-personal-theme);
+    $my-personal-theme: mat.define-light-theme((
+        color: (
+            primary: $my-personal-primary,
+            accent: $my-personal-accent,
+            warn: $my-personal-warn,
+        ),
+        typography: mat.define-typography-config(),
+        density: 0,
+    ));
+ 
+    @include mat.all-component-colors($my-personal-theme);
 }
