@@ -95,9 +95,9 @@
 						{{vac.reasonname}}
 					</td>
 					<td class="icon-col" scope="row">
-                        du {{vac.startdate}} <span *ngIf="vac.startafternoon == 1">PM</span> <!--| date:'shortDate':'':'fr-FR' -->
+                        du {{vac.startdate| date:'shortDate':'':'fr-FR'}} <span *ngIf="vac.startafternoon == 1">PM</span>
                         <br />
-                        au {{vac.enddate}} <span *ngIf="vac.endbeforenoon == 1">AM</span> <!--| date:'shortDate':'':'fr-FR' -->
+                        au {{vac.enddate| date:'shortDate':'':'fr-FR'}} <span *ngIf="vac.endbeforenoon == 1">AM</span> <!--| date:'shortDate':'':'fr-FR' -->
 					</td>
 					<td class="colwst-{{vac.status}}">
 						{{vac.statusname}}
