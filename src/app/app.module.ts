@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
@@ -67,6 +68,7 @@ import { LogoutComponent } from './core/components/logout/logout.component';
   ],
   imports: [
     uiModules,
+    CommonModule,
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,

@@ -9,6 +9,11 @@ export const environment = {
   AcrApiUrl: "https://soredi.crealcs.com/api/actreport",
   EmpApiUrl: "https://soredi.crealcs.com/api/employee",
   PhoApiUrl: "https://soredi.crealcs.com/api/pubholiday",
+  VacApiUrl: "https://soredi.crealcs.com/api/vacation",
+  ReaApiUrl: "https://soredi.crealcs.com/api/reason",
+  WrkApiUrl: "https://soredi.crealcs.com/api/workflow",
+  WstApiUrl: "https://soredi.crealcs.com/api/wfstatus",
+  VjlApiUrl: "https://soredi.crealcs.com/api/vacjournal",
   InvApiUrl: "https://soredi.crealcs.com/api/invoice",};
 
 /*
