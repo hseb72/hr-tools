@@ -13,12 +13,14 @@ import { VacationService } from '../services/vacation.service';
 import { WorkflowService } from '../services/workflow.service';
 import { EmployeeService } from '../services/employee.service';
 
+import { Reason } from '../../core/models/reason';
 import { Vacation } from '../../core/models/vacation';
+import { WorkflowStatus } from '../../core/models/wfstatus';
+import { WorkflowNextStep } from '../../core/models/wfnextstep';
 
 declare var $: any;
+Ò
 const EMPTY_USER = { id: 0, email: '', firstName: '', lastName: '' };
-
-@Input() ;
 
 @Component({
   selector: 'app-vaclist',
@@ -33,7 +35,7 @@ export class VacListComponent implements OnInit {
 
   workflow = '1' ;
   vacations = [] ;
-  filterVacs = [] ;
+  filterVacs: Vacation [] = [] ;
   employees = [] ;
 
   today: string;
@@ -42,9 +44,9 @@ export class VacListComponent implements OnInit {
   nextyear: string;
 
   vacNewForm: FormGroup;
-  reasonRefs: [] = [] ;
-  WFStepRefs: [] = [];
-  WFStatusRefs: [] = [];
+  reasonRefs: Reason[] = [] ;
+  WFStepRefs: WorkflowNextStep[] = [];
+  WFStatusRefs: WorkflowStatus[] = [];
   WFSIcons = [ '', 'fa-wrench', 'fa-envelope', 'fa-check green', 'fa-times red', 'fa-trash', 'fa-trash', 'fa-trash' ] ;
 
   loading = false;
@@ -150,8 +152,8 @@ export class VacListComponent implements OnInit {
     });
   }
 
-  updateVacation( id: string, ids: string ) {
-    this.vacationService.submitVacation( id, ids ).subscribe(vacs => {
+  updateVacation( id: number, ids: number ) {
+    this.vacationService.submitVacation( '' + id, ''+ ids ).subscribe(vacs => {
       this.refresh() ;
     });
   }

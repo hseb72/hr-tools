@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { VacationRoutingModule } from './vacation-routing.module';
 import { VacMainComponent } from './vac-main/vac-main.component';
+import { VacListComponent } from './vac-list/vac-list.component';
 import { VacHeaderComponent } from './vac-header/vac-header.component';
 
 import { MatButtonModule } from '@angular/material/button' ;
@@ -27,6 +28,7 @@ const uiModules = [
 @NgModule({
   declarations: [
     VacMainComponent,
+    VacListComponent,
     VacHeaderComponent
   ],
   imports: [

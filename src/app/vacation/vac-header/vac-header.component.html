@@ -18,9 +18,9 @@
     <mat-sidenav-container class="sidenav-container {{ isMenuOpen ? 'expanded' : 'shrinked' }}">
         <mat-sidenav #sidenav autoFocus="false" mode="over" [(opened)]="isMenuOpen" class="sidenav">
         <a mat-button routerLink="/vacation"><mat-icon>dashboard</mat-icon> Tableau de bord</a>
-        <a mat-button routerLink="/vacation/vac-new" color="accent"><mat-icon>playlist_add</mat-icon> Nouvelle absence</a>
-        <a mat-button routerLink="/vacation/vac-list" color="accent"><mat-icon>description</mat-icon> Liste des congés </a>
-        <a mat-button routerLink="/vacation/vac-calendar" color="accent"><mat-icon>calendar_today</mat-icon> Calendrier</a>
+        <a mat-button routerLink="/vacation/new" color="accent"><mat-icon>playlist_add</mat-icon> Nouvelle absence</a>
+        <a mat-button routerLink="/vacation/list" color="accent"><mat-icon>description</mat-icon> Liste des congés </a>
+        <a mat-button routerLink="/vacation/calendar" color="accent"><mat-icon>calendar_today</mat-icon> Calendrier</a>
     </mat-sidenav>
   </mat-sidenav-container>
 </header>

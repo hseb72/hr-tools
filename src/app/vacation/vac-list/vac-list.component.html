@@ -1,80 +1,83 @@
-<div style="text-align: center; vertical-align: middle;">
-	<table width="100%" *ngIf="currentUser == vacationUser">
-		<tr class="noFilterBox">
-			<td>
-				<button (click)='switchFilters()' style="width: 100%;"><i class="fa fa-angle-double-down"> Nouvelle Déclaration</i></button>
-			</td>
-		</tr>
-		<tr class="filterBox" style="display:none;">
-			<td>
-				<button (click)='switchFilters()' style="width: 100%;"><i class="fa fa-angle-double-up"> Annuler</i></button>
-			</td>
-		</tr>
-		<tr class="filterBox" style="display:none;">
-			<div id="vacnew" style="display:block">
-				<form [formGroup]="vacNewForm" (ngSubmit)="onSubmit()">
-					<div class="form-group">
-						<table class="table table-sm table-striped table-dark">
-							<tr>
-								<td>
-									<label for="start">Commence le</label>
-									<input type="date" formControlName="start" class="form-control" [ngClass]="{ 'is-invalid': submitted && f ['start'] . errors }" value="2019-10-28"/>
-									<div *ngIf="submitted && f.start.errors" class="invalid-feedback">
-										<div *ngIf="f.start.errors.required">Commencement obligatoire</div>
-									</div>				
-								</td>
-								<td>
-									<label for="afternoon">Après-midi</label>
-									<input type="checkbox" formControlName="afternoon" class="form-control"/>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<label for="end">Finit le</label>
-									<input type="date" formControlName="end" class="form-control" [ngClass]="{ 'is-invalid': submitted && f ['end'] . errors }" value="2019-10-28" />
-									<div *ngIf="submitted && f.end.errors" class="invalid-feedback">
-										<div *ngIf="f.end.errors.required">Fin obligatoire</div>
-									</div>
-								</td>
-								<td>
-									<label for="morning">Matin</label>
-									<input type="checkbox" formControlName="morning" class="form-control" />
-								</td>
-							</tr>
-							<tr>
-								<td colspan="2">
-									<label for="reason">Motif</label>
-									<select formControlName="reason" class="form-control" [ngClass]="{ 'is-invalid': submitted && f ['reason'] . errors }">
-										<option value="0" disabled="disabled" selected="selected">-- Choose one --</option>
-										<option *ngFor="let reason of reasonRefs" value="{{reason.id}}">{{reason.name}}</option>
-									</select>
-									<div *ngIf="submitted && f.reason.errors" class="invalid-feedback">
-										<div *ngIf="f.reason.errors.required">Motif obligatoire</div>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td colspan="2">
-									<label for="otherreason">Motif (si autre)</label>
-									<textarea rows="4" cols="40" formControlName="otherreason" class="form-control"></textarea>
-								</td>
-							</tr>
-							<tr>
-								<td colspan="2" align="center">
-									<button [disabled]="loading" class="btn btn-primary" style="margin: 4px;">D&eacute;clarer</button>
-									<img alt="ha!" *ngIf="loading" class="pl-2" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
-								</td>
-							</tr>
-						</table>
-					</div>
-					<div *ngIf="error" class="alert alert-danger">{{error}}</div>
-				</form>
-			</div>
-		</tr>
-	</table>
-</div>
+<app-vac-header></app-vac-header>
 
-<table class="table table-sm table-striped table-dark">
+<div id="main-container" class="my-vacation-theme">
+	<div style="text-align: center; vertical-align: middle;">
+		<table width="100%" *ngIf="currentUser == vacationUser">
+			<tr class="noFilterBox">
+				<td>
+					<button (click)='switchFilters()' style="width: 100%;"><i class="fa fa-angle-double-down"> Nouvelle Déclaration</i></button>
+				</td>
+			</tr>
+			<tr class="filterBox" style="display:none;">
+				<td>
+					<button (click)='switchFilters()' style="width: 100%;"><i class="fa fa-angle-double-up"> Annuler</i></button>
+				</td>
+			</tr>
+			<tr class="filterBox" style="display:none;">
+				<div id="vacnew" style="display:block">
+					<form [formGroup]="vacNewForm" (ngSubmit)="onSubmit()">
+						<div class="form-group">
+							<table class="table table-sm table-striped table-dark">
+								<tr>
+									<td>
+										<label for="start">Commence le</label>
+										<input type="date" formControlName="start" class="form-control" [ngClass]="{ 'is-invalid': submitted && f ['start'] . errors }" value="2019-10-28"/>
+										<div *ngIf="submitted && f ['start'] . errors" class="invalid-feedback">
+											<div *ngIf="f ['start'] .errors ['required']">Commencement obligatoire</div>
+										</div>				
+									</td>
+									<td>
+										<label for="afternoon">Après-midi</label>
+										<input type="checkbox" formControlName="afternoon" class="form-control"/>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<label for="end">Finit le</label>
+										<input type="date" formControlName="end" class="form-control" [ngClass]="{ 'is-invalid': submitted && f ['end'] . errors }" value="2019-10-28" />
+										<div *ngIf="submitted && f ['end'] .errors" class="invalid-feedback">
+											<div *ngIf="f ['end'] . errors ['required']">Fin obligatoire</div>
+										</div>
+									</td>
+									<td>
+										<label for="morning">Matin</label>
+										<input type="checkbox" formControlName="morning" class="form-control" />
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2">
+										<label for="reason">Motif</label>
+										<select formControlName="reason" class="form-control" [ngClass]="{ 'is-invalid': submitted && f ['reason'] . errors }">
+											<option value="0" disabled="disabled" selected="selected">-- Choose one --</option>
+											<option *ngFor="let reason of reasonRefs" value="{{reason.id}}">{{reason.name}}</option>
+										</select>
+										<div *ngIf="submitted && f ['reason'] .errors" class="invalid-feedback">
+											<div *ngIf="f ['reason'] .errors ['required']">Motif obligatoire</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2">
+										<label for="otherreason">Motif (si autre)</label>
+										<textarea rows="4" cols="40" formControlName="otherreason" class="form-control"></textarea>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2" align="center">
+										<button [disabled]="loading" class="btn btn-primary" style="margin: 4px;">D&eacute;clarer</button>
+										<img alt="ha!" *ngIf="loading" class="pl-2" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+									</td>
+								</tr>
+							</table>
+						</div>
+						<div *ngIf="error" class="alert alert-danger">{{error}}</div>
+					</form>
+				</div>
+			</tr>
+		</table>
+	</div>
+
+	<table class="table table-sm table-striped table-dark">
 		<tbody>
 			<tr >
 				<th>Catégorie</th>
@@ -109,3 +112,5 @@
 				</tr>
 			</ng-container>
 		</tbody>
+	</table>
+</div>
