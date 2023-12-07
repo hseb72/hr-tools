@@ -19,7 +19,7 @@ import { WorkflowStatus } from '../../core/models/wfstatus';
 import { WorkflowNextStep } from '../../core/models/wfnextstep';
 
 declare var $: any;
-Ò
+
 const EMPTY_USER = { id: 0, email: '', firstName: '', lastName: '' };
 
 @Component({
@@ -131,7 +131,7 @@ export class VacListComponent implements OnInit {
       $( '.noFilterBox' ) . css ( 'display', 'none' ) ;
     } else {
       $( '.filterBox' ) . css ( 'display', 'none' ) ;
-      $( '.noFilterBox' ) . css ( 'display', 'table-row' ) ;
+    $( '.noFilterBox' ) . css ( 'display', 'table-row' ) ;
     }
   }
 
