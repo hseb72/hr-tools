@@ -30,7 +30,8 @@ const uiModules = [
   declarations: [
     VacMainComponent,
     VacListComponent,
-    VacHeaderComponent
+    VacHeaderComponent,
+    VacCalendarComponent
   ],
   imports: [
     uiModules,
