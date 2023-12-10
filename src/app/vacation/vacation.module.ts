@@ -7,6 +7,7 @@ import { VacationRoutingModule } from './vacation-routing.module';
 import { VacMainComponent } from './vac-main/vac-main.component';
 import { VacListComponent } from './vac-list/vac-list.component';
 import { VacHeaderComponent } from './vac-header/vac-header.component';
+import { VacCalendarComponent } from './vac-calendar/vac-calendar.component';
 
 import { MatButtonModule } from '@angular/material/button' ;
 import { MatIconModule } from '@angular/material/icon' ;
@@ -38,6 +39,6 @@ const uiModules = [
     FormsModule,
     ReactiveFormsModule,
     VacationRoutingModule
-  ]
+   ]
 })
 export class VacationModule { }
