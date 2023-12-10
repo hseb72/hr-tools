@@ -1,0 +1,24 @@
+<header class="my-bo-theme">
+    <mat-toolbar color="primary">
+        <button mat-icon-button class="menu-button" (click)="sidenav.toggle(); andMore()">
+            <mat-icon>{{ isMenuOpen ? 'menu_open' : 'menu' }}</mat-icon>
+        </button>
+
+        <span>Référentiels</span> <span *ngIf="subtitle != ''">&nbsp;- {{subtitle}}</span>
+        <span class="spacer"></span>
+
+        <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+            <mat-icon>notifications</mat-icon>
+        </button>
+        <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+            <mat-icon>share</mat-icon>
+        </button>
+    </mat-toolbar>
+
+    <mat-sidenav-container class="sidenav-container {{ isMenuOpen ? 'expanded' : 'shrinked' }}">
+        <mat-sidenav #sidenav autoFocus="false" mode="over" [(opened)]="isMenuOpen" class="sidenav">
+        <a mat-button routerLink="/back-office/reference"><mat-icon>dashboard</mat-icon> Tableau de bord</a>
+        <a mat-button routerLink="/back-office/reference/holiday" color="accent"><mat-icon>calendar_today</mat-icon> Jours fériés</a>
+    </mat-sidenav>
+  </mat-sidenav-container>
+</header>
