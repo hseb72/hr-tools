@@ -7,6 +7,7 @@ import { InvMainComponent } from './inv-main/inv-main.component';
 import { InvAwaitedComponent } from './inv-awaited/inv-awaited.component';
 import { InvPaylateComponent } from './inv-paylate/inv-paylate.component';
 import { InvUploadComponent } from './inv-upload/inv-upload.component';
+import { InvReportComponent } from './inv-report/inv-report.component';
 
 import { MatButtonModule } from '@angular/material/button' ;
 import { MatIconModule } from '@angular/material/icon' ;
@@ -34,7 +35,8 @@ const uiModules = [
     InvMainComponent,
     InvAwaitedComponent,
     InvPaylateComponent,
-    InvUploadComponent
+    InvUploadComponent,
+    InvReportComponent
   ],
   imports: [
     CommonModule,

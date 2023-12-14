@@ -1,0 +1,15 @@
+<app-inv-header></app-inv-header>
+
+<div id="main-container" class="my-bo-theme">
+
+<form id="sendemail" style="text-align: center; margin: 4px; display: block; ">
+    Période : <input class="text-light bg-dark" type="text" id="period" size="4" maxsize="4" 
+        placeholder="AAMM" 
+        style="text-align: center; margin: 5px;"/>
+    Destinataire : <input class="text-light bg-dark" type="text" id="recipients" size="50" maxsize="80" 
+        placeholder="pierre.rolin@soredi-group.com, martine.pain@soredi-group.com, sebastien.raimondi@soredi-group.com" 
+        style="text-align: center; margin: 5px;"/>
+    Envoyer : <button class="btn btn-dark" style="margin-left: 4px;" (click)="sendReport()"><mat-icon>mail</mat-icon></button>
+</form>
+
+</div>

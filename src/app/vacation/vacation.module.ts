@@ -33,7 +33,7 @@ const uiModules = [
     VacHeaderComponent,
     VacCalendarComponent
   ],
-  imports: [
+    imports: [
     uiModules,
     CommonModule,
     BrowserModule,
