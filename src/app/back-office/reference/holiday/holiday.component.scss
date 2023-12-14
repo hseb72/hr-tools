@@ -1,0 +1,65 @@
+table .holiday-names {
+    margin: 0 auto;
+}
+
+.holiday-names th, .holiday-names td {
+    text-align: left;
+}
+
+th, td {
+    background-color: white;
+	color: #418ace;
+    text-align: center;
+	font-family: Verdana;
+	font-size: 7pt;
+/*
+	padding-left: 2px;
+	padding-right: 2px;
+	margin-top: 2px;
+*/
+}
+
+.dayoff {
+    background-color: cornsilk;
+}
+
+.holiday {
+    background-color: rgb(221, 235, 240);
+	border: 1px solid #418ace;
+}
+
+.holname {
+    background-color: white;
+	color: #418ace;
+	border: 1px solid #418ace;
+	font-family: Verdana;
+	font-size: 7pt;
+}
+
+.changed {
+    background-color: rgb(221, 235, 240);
+	color: #418ace;
+	border: 1px solid #418ace;
+	font-family: Verdana;
+	font-size: 7pt;
+}
+
+.error {
+    background-color: rgb(255, 196, 196);
+	color: red;
+	border: 1px solid #418ace;
+}
+
+.action {
+	padding-left: 2px;
+	padding-right: 2px;
+
+	.mat-icon {
+		font-size: small;
+	}
+
+	.mat-mdc-icon-button, .mat-mdc-button-base  {
+			--mdc-icon-button-state-layer-size: 24px;
+			padding: 0px;
+	}
+}

@@ -1,87 +1,64 @@
 <app-act-header></app-act-header>
 
 <div id="main-container" class="my-activity-theme">
-<h2>Gestion des jours fériés</h2>
-<div style="margin: 0 auto;width: 100%;">
-    <table style="margin: 0 auto;width: 100%;">
-        <tr>
-            <th>
-                <a [href]="'/activity/calendar?year='+prevyear">
-                        <mat-icon>chevron_left</mat-icon>
-                </a>
-                {{ curryear }}
-                <a [href]="'/activity/calendar?year='+nextyear">
-                    <mat-icon>chevron_right</mat-icon>
-                </a>
-            </th>
-            <ng-container *ngFor="let weekday of weekdays;let i = index">
-                <th [ngClass]="{'dayoff' : (i)%7 === 0 || (i)%7 === 6 }">{{ weekdayHeads [ (i)%7 ] }}</th>
-            </ng-container>
-            <ng-container *ngFor="let weekday of weekdays;let i = index">
-                <th [ngClass]="{'dayoff' : (i)%7 === 0 || (i)%7 === 6 }">{{ weekdayHeads [ (i)%7 ] }}</th>
-            </ng-container>
-            <ng-container *ngFor="let weekday of weekdays;let i = index">
-                <th [ngClass]="{'dayoff' : (i)%7 === 0 || (i)%7 === 6 }">{{ weekdayHeads [ (i)%7 ] }}</th>
-            </ng-container>
-            <ng-container *ngFor="let weekday of weekdays;let i = index">
-                <th [ngClass]="{'dayoff' : (i)%7 === 0 || (i)%7 === 6 }">{{ weekdayHeads [ (i)%7 ] }}</th>
-            </ng-container>
-            <ng-container *ngFor="let weekday of weekdays;let i = index">
-                <th [ngClass]="{'dayoff' : (i)%7 === 0 || (i)%7 === 6 }">{{ weekdayHeads [ (i)%7 ] }}</th>
-            </ng-container>
-            <ng-container *ngFor="let weekday of weekdays;let i = index">
-                <th [ngClass]="{'dayoff' : (i)%7 === 0 || (i)%7 === 6 }">{{ weekdayHeads [ (i)%7 ] }}</th>
-            </ng-container>
-        </tr>
-        <ng-container *ngFor="let month of monthNames;let i = index">
+    <h2>Gestion des jours fériés</h2>
+    <div style="margin: 0 auto;width: 100%;">
+        <table style="margin: 0 auto;">
             <tr>
-                <th>{{ month }}</th>
-                <ng-container *ngFor="let day of calendar[i];let j = index">
-                    <td [ngClass]="{'dayoff' : (j)%7 === 0 || (j)%7 === 6, 'holiday': holilist[''+curryear+'-'+(i+1)+'-'+day] === 1 }">
-                        <a (click)="setNewHoliday(day, i)">{{day}}</a>
-                    </td>
+                <th>
+                    <a [href]="'back-office/reference/holiday?year='+prevyear">
+                            <mat-icon>chevron_left</mat-icon>
+                    </a>
+                    {{ curryear }}
+                    <a [href]="'/back-office/reference/holiday?year='+nextyear">
+                        <mat-icon>chevron_right</mat-icon>
+                    </a>
+                </th>
+                <ng-container *ngFor="let weekday of weekdays;let i = index">
+                    <th [ngClass]="{'dayoff' : (i)%7 === 0 || (i)%7 === 6 }">{{ weekdayHeads [ (i)%7 ] }}</th>
+                </ng-container>
+                <ng-container *ngFor="let weekday of weekdays;let i = index">
+                    <th [ngClass]="{'dayoff' : (i)%7 === 0 || (i)%7 === 6 }">{{ weekdayHeads [ (i)%7 ] }}</th>
+                </ng-container>
+                <ng-container *ngFor="let weekday of weekdays;let i = index">
+                    <th [ngClass]="{'dayoff' : (i)%7 === 0 || (i)%7 === 6 }">{{ weekdayHeads [ (i)%7 ] }}</th>
+                </ng-container>
+                <ng-container *ngFor="let weekday of weekdays;let i = index">
+                    <th [ngClass]="{'dayoff' : (i)%7 === 0 || (i)%7 === 6 }">{{ weekdayHeads [ (i)%7 ] }}</th>
+                </ng-container>
+                <ng-container *ngFor="let weekday of weekdays;let i = index">
+                    <th [ngClass]="{'dayoff' : (i)%7 === 0 || (i)%7 === 6 }">{{ weekdayHeads [ (i)%7 ] }}</th>
+                </ng-container>
+                <ng-container *ngFor="let weekday of weekdays;let i = index">
+                    <th [ngClass]="{'dayoff' : (i)%7 === 0 || (i)%7 === 6 }">{{ weekdayHeads [ (i)%7 ] }}</th>
                 </ng-container>
             </tr>
-        </ng-container>
-    </table>
-</div>
-<br />
+            <ng-container *ngFor="let month of monthNames;let i = index">
+                <tr>
+                    <th>{{ month }}</th>
+                    <ng-container *ngFor="let day of calendar[i];let j = index">
+                        <td [ngClass]="{'dayoff' : (j)%7 === 0 || (j)%7 === 6, 'holiday': holilist[''+curryear+'-'+(i+1)+'-'+day] === 1 }">
+                            <a (click)="setNewHoliday(day, i)">{{day}}</a>
+                        </td>
+                    </ng-container>
+                </tr>
+            </ng-container>
+        </table>
+    </div>
+    <br />
 
-<div style="margin: 0 auto;width: 100%;">
-    <table style="margin: 0 auto;">
-        <tr>
-            <th>Jour</th>
-            <th>Nom</th>
-            <th>Actions</th>
-        </tr>
-        <ng-container *ngFor="let hol of holidays;let i = index">
+    <div style="margin: 0 auto;width: 100%;">
+        <table style="margin: 0 auto;" class="holiday-names">
             <tr>
-                <td>{{ hol.month + '/' + hol.day + '/' + hol.year | date:'longDate':'':'fr-FR' }}</td>
-                <td><input id="i_{{hol.id}}" value="{{ hol.reason }}" class="holname" (change)="hasChanged(hol.id)" /></td>
-                <!--td>
-                    <mat-autocomplete #auto="matAutocomplete">
-                        <mat-option *ngFor="let holiname of holinames" [value]="holiname">
-                        {{holiname}}
-                        </mat-option>
-                    </mat-autocomplete>
-                    <input type="text"
-                        placeholder="Pick one"
-                        aria-label="Number"
-                        matInput
-                        [formControl]="myControl"
-                        [matAutocomplete]="auto">
-                </td-->
-                <td>
-                    <button mat-icon-button class="action text-warning" (click)="updateHoliday(hol.id)">
-                        <mat-icon>edit</mat-icon>
-                    </button>
-                    <button mat-icon-button class="action text-danger" (click)="unsetHoliday(hol.id)">
-                        <mat-icon>delete</mat-icon>
-                    </button>
-                    <!--fa-icon class="action text-danger" [icon]="['fas', 'trash-alt']" (click)="unsetHoliday(hol.id)"> </fa-icon-->
-                </td>
+                <th>Jour</th>
+                <th>Nom</th>
             </tr>
-        </ng-container>
-    </table>
-</div>
+            <ng-container *ngFor="let hol of holidays;let i = index">
+                <tr>
+                    <td>{{ hol.month + '/' + hol.day + '/' + hol.year | date:'longDate':'':'fr-FR' }}</td>
+                    <td>{{ hol.reason }}</td>
+                </tr>
+            </ng-container>
+        </table>
+    </div>
 </div>
