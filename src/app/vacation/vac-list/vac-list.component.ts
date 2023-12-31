@@ -116,6 +116,7 @@ export class VacListComponent implements OnInit {
   }
 
   refresh() {
+    console.log ( this.currentUser);
     this.employeeService.getVacation(this.currentUser.id).pipe(first()).subscribe(vacs => {
       this.vacations = JSON.parse(JSON.stringify(vacs)).reverse();
       this.filterVacs = this.vacations.filter((vac: Vacation) => vac.enddate >= (this.prevyear) && vac.startdate <= this.nextyear );
