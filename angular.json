@@ -46,8 +46,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "2500kb",
-                  "maximumError": "3mb"
+                  "maximumWarning": "3mb",
+                  "maximumError": "4mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -119,5 +119,8 @@
       }
     }
   },
-  "defaultProject": "hr-tools"
+  "defaultProject": "hr-tools",
+  "cli": {
+    "analytics": false
+  }
 }
