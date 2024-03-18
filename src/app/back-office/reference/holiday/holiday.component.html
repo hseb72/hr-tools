@@ -3,7 +3,7 @@
 <div id="main-container" class="my-activity-theme">
     <h2>Gestion des jours fériés</h2>
     <div style="margin: 0 auto;width: 100%;">
-        <table class=""holiday-names>
+        <table class="holiday-names">
             <tr>
                 <th>
                     <a [href]="'back-office/reference/holiday?year='+prevyear">
@@ -57,28 +57,27 @@
             <ng-container *ngFor="let hol of holidays;let i = index">
                 <tr>
                     <td>{{ hol.month + '/' + hol.day + '/' + hol.year | date:'longDate':'':'fr-FR' }}</td>
-                    <td><input id="i_{{hol.id}}" value="{{ hol.reason }}" class="holname" (change)="hasChanged(hol.id)" /></td>
-                    <!--td>
-                        <mat-autocomplete #auto="matAutocomplete">
-                            <mat-option *ngFor="let holiname of holinames" [value]="holiname">
+                    <td>
+                        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="hasChanged(hol.id)" >
+                            <mat-option *ngFor="let holiname of holinames" [value]="holiname" class="holname-opt">
                             {{holiname}}
                             </mat-option>
                         </mat-autocomplete>
-                        <input type="text"
+                        <input type="text" id="i_{{hol.id}}" value="{{ hol.reason }}"
+                            class="holname"
                             placeholder="Pick one"
                             aria-label="Number"
                             matInput
-                            [formControl]="myControl"
                             [matAutocomplete]="auto">
-                    </td-->
-                    <td>
-                        <button mat-icon-button class="action text-warning" (click)="updateHoliday(hol.id)">
-                            <mat-icon>edit</mat-icon>
+                        </td>
+                            <!-- [formControl]="myControl" -->
+                        <td class="actions">
+                        <button mat-icon-button class="action" (click)="updateHoliday(hol.id)">
+                            <mat-icon color="accent" class="action-icon">edit</mat-icon>
                         </button>
-                        <button mat-icon-button class="action text-danger" (click)="unsetHoliday(hol.id)">
-                            <mat-icon>delete</mat-icon>
+                        <button mat-icon-button class="action" (click)="unsetHoliday(hol.id)">
+                            <mat-icon color="warn" class="action-icon">delete</mat-icon>
                         </button>
-                        <!--fa-icon class="action text-danger" [icon]="['fas', 'trash-alt']" (click)="unsetHoliday(hol.id)"> </fa-icon-->
                     </td>
                 </tr>
             </ng-container>

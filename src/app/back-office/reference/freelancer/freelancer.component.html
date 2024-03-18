@@ -1,0 +1,60 @@
+<app-ref-header></app-ref-header>
+
+<div id="main-container" class="my-bo-theme">
+    <mat-paginator
+        [length]="totalSize"
+        [pageSize]="pageSize"
+        [pageIndex]="currentPage"
+        [pageSizeOptions]="pageSizes"
+        showFirstLastButtons
+        aria-label="Choisir la page">
+    </mat-paginator>
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> Id. </th>
+            <td mat-cell *matCellDef="let element">{{element.id}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="compname">
+            <th mat-header-cell *matHeaderCellDef> Compagnie </th>
+            <td mat-cell *matCellDef="let element">{{element.compname}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="headname">
+            <th mat-header-cell *matHeaderCellDef> Représentant </th>
+            <td mat-cell *matCellDef="let element">{{element.headname}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="code">
+            <th mat-header-cell *matHeaderCellDef> Code </th>
+            <td mat-cell *matCellDef="let element">{{element.code}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="mainemail">
+            <th mat-header-cell *matHeaderCellDef> eMail </th>
+            <td mat-cell *matCellDef="let element">{{element.mainemail}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="activefrom">
+            <th mat-header-cell *matHeaderCellDef> Depuis </th>
+            <td mat-cell *matCellDef="let element">{{element.activefrom|date}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="activeuntil">
+            <th mat-header-cell *matHeaderCellDef> Jusqu'à </th>
+            <td mat-cell *matCellDef="let element">{{element.activeuntil|date}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef> Actions </th>
+            <td mat-cell *matCellDef="let element"><i class="fas fa-file-invoice" [routerLink]="['/invoicing']" [queryParams]="{frl: element.code}"></i></td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <!-- Some margin to be sure to get the main container bottom visible -->
+    <div class="vertical-spacer"></div>
+</div>

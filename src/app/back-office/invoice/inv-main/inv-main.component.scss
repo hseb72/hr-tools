@@ -1,0 +1,24 @@
+.mat-column-id {
+    width: 32px;
+    border-right: 1px solid currentColor;
+    padding-right: 24px;
+    text-align: center;
+}
+
+.mat-column-file {
+    width: 32px;
+    border-right: 1px solid currentColor;
+    padding-right: 24px;
+    text-align: center;
+}
+
+.mat-column-actions {
+    width: 32px;
+    border-left: 1px solid currentColor;
+    padding-right: 24px;
+    text-align: center;
+}
+
+th.mat-sort-header-sorted {
+    color: red;
+}

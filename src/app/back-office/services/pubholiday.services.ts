@@ -32,8 +32,8 @@ export class PubholidayService {
     return this.http.get(`${environment.PhoApiUrl}?year=${year}`);
   }
 
-  getNames(id: string) {
-    return this.http.get(`${environment.PhoApiUrl}?list=name`);
+  getReasons() {
+    return this.http.get(`${environment.PhoApiUrl}?list=reasons`);
   }
 
   putPubholiday(content: string) {

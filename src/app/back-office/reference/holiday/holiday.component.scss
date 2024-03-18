@@ -1,4 +1,4 @@
-table .holiday-names {
+table.holiday-names {
     margin: 0 auto;
 }
 
@@ -12,11 +12,6 @@ th, td {
     text-align: center;
 	font-family: Verdana;
 	font-size: 7pt;
-/*
-	padding-left: 2px;
-	padding-right: 2px;
-	margin-top: 2px;
-*/
 }
 
 .dayoff {
@@ -34,6 +29,18 @@ th, td {
 	border: 1px solid #418ace;
 	font-family: Verdana;
 	font-size: 7pt;
+	min-height: 8px;
+	height: 18px;
+	width: 130px;
+}
+
+.holname-opt {
+    background-color: white;
+	color: #418ace;
+	border: 1px solid #418ace;
+	font-family: Verdana;
+	font-size: 7pt;
+	min-height: 8px;
 }
 
 .changed {
@@ -50,16 +57,17 @@ th, td {
 	border: 1px solid #418ace;
 }
 
-.action {
-	padding-left: 2px;
-	padding-right: 2px;
+.actions { text-align: center; }
 
-	.mat-icon {
-		font-size: small;
-	}
+button.action {
+	width: 20px;
+	height: 20px;
+	margin:0px;
+	padding: 0px 0px 0px 0px ;
+	transform: scale(0.7);
 
-	.mat-mdc-icon-button, .mat-mdc-button-base  {
-			--mdc-icon-button-state-layer-size: 24px;
-			padding: 0px;
+	.mdc-icon-button, .mat-mdc-icon-button {
+		--mdc-icon-button-state-layer-size: 12px;
+		--mdc-icon-button-icon-size: 7px;	
 	}
 }

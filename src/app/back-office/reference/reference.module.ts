@@ -5,6 +5,7 @@ import { ReferenceRoutingModule } from './reference-routing.module';
 import { RefHeaderComponent } from './ref-header/ref-header.component';
 import { RefMainComponent } from './ref-main/ref-main.component';
 import { HolidayComponent } from './holiday/holiday.component';
+import { FreelancerComponent } from './freelancer/freelancer.component';
 
 import { MatButtonModule } from '@angular/material/button' ;
 import { MatIconModule } from '@angular/material/icon' ;
@@ -14,6 +15,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 const uiModules = [
   MatSidenavModule,
@@ -23,14 +26,17 @@ const uiModules = [
   MatListModule,
   MatTableModule,
   MatToolbarModule,
-  MatCheckboxModule
+  MatCheckboxModule,
+  MatAutocompleteModule,
+  MatPaginatorModule
 ];
 
 @NgModule({
   declarations: [
     RefHeaderComponent,
     RefMainComponent,
-    HolidayComponent
+    HolidayComponent,
+    FreelancerComponent
   ],
   imports: [
     CommonModule,

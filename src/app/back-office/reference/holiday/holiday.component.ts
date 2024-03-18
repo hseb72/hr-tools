@@ -51,6 +51,7 @@ export class HolidayComponent implements OnInit {
   calendar: any[] = [[]] ;
   holidays: any[] = [] ;
   holilist: any[string] = [] ;
+  holinames: string[] = []
 
 /*
   myControl = new FormControl('');
@@ -102,6 +103,17 @@ export class HolidayComponent implements OnInit {
       mo++;
     }
 
+    this . pubholidayService . getReasons ()
+    . subscribe (
+      (reasons) => {
+         var temp: any = [] ;
+         JSON.parse(JSON.stringify(reasons)).forEach(function(e: any){ 
+           temp.push (e.pho_reason) ;
+         });
+         this.holinames = temp ;
+      }
+    );
+
     this.refresh() ;
   }
 
@@ -127,6 +139,7 @@ export class HolidayComponent implements OnInit {
         console.log ( this.holidays) ;
 
         let templist:any [string] = [] ;
+        let templist2:any [number] = [] ;
         this.holidays.forEach(function(e: any){
           let d = e.day ; 
           let m = e.month ;
@@ -176,12 +189,9 @@ export class HolidayComponent implements OnInit {
   }
 
   hasChanged (id: string) {
+    console.log ("has changed") ;
     let lid = 'i_' + id ;
     let e = document . getElementById ( lid ) ;
     if ( e ) e . className = 'changed' ;
-  }
-
-  matAutocomplete () {
-    
   }
 }

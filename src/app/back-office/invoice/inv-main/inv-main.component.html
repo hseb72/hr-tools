@@ -31,48 +31,119 @@
         </div>
     </nav>
     
-    <table class="table table-sm table-striped table-dark">
-        <tbody>
-            <tr >
-                <th>Id</th>
-                <th>Fichier</th>
-                <th>Ind&eacute;pendant</th>
-                <th>P&eacute;riode</th>
-                <th>R&eacute;f&eacute;rence</th>
-                <th>Affich. Freelance</th>
-                <th>Affich. Interne</th>
-                <th>Montant</th>
-                <th>Rapproch&eacute;</th>
-                <th>Pay&eacute;</th>
-                <th>Mail envoy&eacute;</th>
-                <th>Tampon Papier</th>
-                <th>Tampon Elec.</th>
-                <th>Annulation</th>
-                <th>Actions</th>
-            </tr>
-            <ng-container *ngFor="let inv of filteredInvoices">
-                <tr>
-                    <td>{{inv.id}}</td>
-                    <td><a (click)="setFileFilter(inv.filename)">{{inv.filename}}</a></td>
-                    <td><a (click)="setFrlFilter(inv.freelancecode)">{{inv.freelancecode}}</a></td>
-                    <td><a (click)="setPeriodFilter(inv.period)">{{inv.period}}</a></td>
-                    <td>{{inv.reference}}</td>
-                    <td>{{inv.frldisplay}}</td>
-                    <td>{{inv.sordisplay}}</td>
-                    <td>{{inv.amount}}</td>
-                    <td>{{inv.payamount}}</td>
-                    <td><input type="checkbox" [checked]="inv.payed == '1'" (click)="clicked(inv.id, 'payed', inv.payed)"/></td>
-                    <td><input type="checkbox" [checked]="inv.mailtofrl == '1'" (click)="clicked(inv.id, 'mailtofrl', inv.mailtofrl)"/></td>
-                    <td><input type="checkbox" [checked]="inv.stamped == '1'" (click)="clicked(inv.id, 'stamped', inv.stamped)"/></td>
-                    <td><input type="checkbox" [checked]="inv.estamped == '1'" (click)="clicked(inv.id, 'estamped', inv.estamped)"/></td>
-                    <td><input type="checkbox" [checked]="inv.cancelled == '1'" (click)="clicked(inv.id, 'cancelled', inv.cancelled)"/></td>
-                    <td nowrap>
-                        <a style="padding-right: 5px;" href="/freelance?id={{inv.freelance}}"><i class="fas fa-user-tie"></i></a>
-                    </td>
-                </tr>
-            </ng-container>
-        </tbody>
+    <mat-paginator
+        [length]="totalSize"
+        [pageSize]="pageSize"
+        [pageIndex]="currentPage"
+        [pageSizeOptions]="pageSizes"
+        showFirstLastButtons
+        aria-label="Choisir la page">
+    </mat-paginator>
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> Id. </th>
+            <td mat-cell *matCellDef="let element">{{element.id}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="file">
+            <th mat-header-cell *matHeaderCellDef> Fichier </th>
+            <td mat-cell *matCellDef="let element">
+                <a (click)="setFrlFilter(element.filename)">{{element.file}}</a>
+            </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="freelancecode">
+            <th mat-header-cell *matHeaderCellDef> Ind&eacute;pendant </th>
+            <td mat-cell *matCellDef="let element">
+                <a (click)="setFrlFilter(element.freelancecode)">{{element.freelancecode}}</a>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="period">
+            <th mat-header-cell *matHeaderCellDef> P&eacute;riode </th>
+            <td mat-cell *matCellDef="let element">
+                <a (click)="setPeriodFilter(element.period)">{{element.period}}</a>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="reference">
+            <th mat-header-cell *matHeaderCellDef> R&eacute;f&eacute;rence </th>
+            <td mat-cell *matCellDef="let element">{{element.reference}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="frldisplay">
+            <th mat-header-cell *matHeaderCellDef> Affich. Freelance </th>
+            <td mat-cell *matCellDef="let element">{{element.frldisplay}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="sordisplay">
+            <th mat-header-cell *matHeaderCellDef> Affich. SOREDI </th>
+            <td mat-cell *matCellDef="let element">{{element.sordisplay}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="amount">
+            <th mat-header-cell *matHeaderCellDef> Montant </th>
+            <td mat-cell *matCellDef="let element">{{element.amount}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="payamount">
+            <th mat-header-cell *matHeaderCellDef> Rapproch&eacute; </th>
+            <td mat-cell *matCellDef="let element">{{element.payamount}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="payed">
+            <th mat-header-cell *matHeaderCellDef> Pay&eacute; </th>
+            <td mat-cell *matCellDef="let element">
+                <input type="checkbox" [checked]="element.payed == '1'" (click)="clicked(element.id, 'payed', element.payed)"/>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="paydate">
+            <th mat-header-cell *matHeaderCellDef> Pay&eacute; le </th>
+            <td mat-cell *matCellDef="let element">{{element.paydate}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="mailtofrl">
+            <th mat-header-cell *matHeaderCellDef>Mail envoy&eacute; </th>
+            <td mat-cell *matCellDef="let element">
+                <input type="checkbox" [checked]="element.mailtofrl == '1'" (click)="clicked(element.id, 'mailtofrl', element.mailtofrl)"/>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="stamped">
+            <th mat-header-cell *matHeaderCellDef> Tampon Papier </th>
+            <td mat-cell *matCellDef="let element">
+                <input type="checkbox" [checked]="element.stamped == '1'" (click)="clicked(element.id, 'stamped', element.stamped)"/>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="estamped">
+            <th mat-header-cell *matHeaderCellDef> Tampon &Eacute;lec. </th>
+            <td mat-cell *matCellDef="let element">
+                <input type="checkbox" [checked]="element.estamped == '1'" (click)="clicked(element.id, 'estamped', element.estamped)"/>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="cancelled">
+            <th mat-header-cell *matHeaderCellDef> Annul&eacute; </th>
+            <td mat-cell *matCellDef="let element">
+                <input type="checkbox" [checked]="element.cancelled == '1'" (click)="clicked(element.id, 'cancelled', element.cancelled)"/>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef> Actions </th>
+            <td mat-cell *matCellDef="let element">
+                <a style="padding-right: 5px;" href="/freelance?id={{element.freelance}}"><i class="fas fa-user-tie"></i></a>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
-        <!-- Some margin to be sure to get the main container bottom visible -->
+
+    <!-- Some margin to be sure to get the main container bottom visible -->
     <div class="vertical-spacer"></div>
 </div>
